@@ -21,7 +21,7 @@ To run a single test file: `node --test tests/users.test.js`
 
 ## Conventions
 
-- Use CommonJS (`require`/`module.exports`), not ES modules — the project is `"sourceType": "script"` in ESLint
+- Use CommonJS (`require`/`module.exports`), not ES modules
 - Route files talk to `db/store.js` functions only — no direct data manipulation in route handlers
 - Tests use Node's built-in `node:test` + `node:assert` with `supertest`; no external test framework
-- `PORT` is read from the environment (`process.env.PORT`), defaulting to 3000; other config goes in `.env` (git-ignored, see `.env.example`)
+- All config goes in `.env` and give example in .env.example
