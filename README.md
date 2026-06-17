@@ -32,7 +32,7 @@ Run it once to see it work:
 
 ```
 npm install
-npm run dev      # starts the API on http://localhost:3000
+npm run dev      # starts the API on http://localhost:3100
 npm test         # runs the sample tests
 npm run lint     # checks code style
 ```
