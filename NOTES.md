@@ -17,4 +17,4 @@ The allow rule covers the command I run most often, so Claude can run the tests 
 - `/memory` lists this `CLAUDE.md` as a loaded project memory.
 - `/permissions` shows the `Bash(npm test:*)` allow and `Read(./.env)` deny rules from `.claude/settings.json`.
 
-//This is a chage
+//This is a change
