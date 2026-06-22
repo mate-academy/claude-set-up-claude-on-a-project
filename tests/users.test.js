@@ -30,3 +30,11 @@ test("POST /users with no body returns 400", async () => {
 
   assert.strictEqual(res.status, 400);
 });
+
+test("GET /status returns 200 with uptime", async () => {
+  const res = await request(app).get("/status");
+
+  assert.strictEqual(res.status, 200);
+  assert.ok(typeof res.body.uptime === "number");
+  assert.ok(res.body.uptime >= 0);
+});
