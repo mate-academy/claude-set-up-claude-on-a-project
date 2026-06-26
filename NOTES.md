@@ -1,0 +1,2 @@
+In my CLAUDE.MD, CLaude did a good job of generating so really didnt have to do anything, am good with what he set.
+In my permissions I used the runt test for allow, commit to git for ask and view .env file for deny
