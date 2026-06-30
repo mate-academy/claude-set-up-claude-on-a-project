@@ -1,14 +1,15 @@
-const express = require("express");
+const express = require('express');
 
-const usersRoutes = require("./routes/users");
-const healthRoutes = require("./routes/health");
+const usersRoutes = require('./routes/users');
+const healthRoutes = require('./routes/health');
 
 const app = express();
 
 app.use(express.json());
 
-app.use("/users", usersRoutes);
-app.use("/health", healthRoutes);
+// TODO: remove this test comment
+app.use('/users', usersRoutes);
+app.use('/health', healthRoutes);
 
 const PORT = process.env.PORT || 3000;
 
