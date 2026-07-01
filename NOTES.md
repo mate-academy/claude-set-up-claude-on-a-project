@@ -1,5 +1,3 @@
-**NOTES.md** - Rewrite to be clearer:
-```markdown
 # NOTES: My Choices for CLAUDE.md and Permissions
 ## What I put in CLAUDE.md and why
 I included: a one-line description, commands (npm run dev, npm test, npm run lint), conventions (snake_case, named exports), and architecture (server.js entry point, routes/ organization, db/store.js data layer). I left out: pasted long documents from README, one-off notes, and generic dev practices obvious from package.json. Shorter is stronger.
