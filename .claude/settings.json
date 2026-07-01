@@ -1,17 +1,24 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(npm test*)",
-      "Bash(eslint*)",
-      "Bash(npm test:*)"
-    ],
-    "deny": [
-      "Read(./.env)",
-      "Bash(git push --force:*)",
-      "Write(.git/hooks/)"
-    ],
-    "ask": [
-      "Bash(git push*)"
-    ]
-  }
+  "permissions": [
+    {
+      "type": "execute",
+      "command": "npm run dev",
+      "explanation": "Allow starting the development server with watch mode."
+    },
+    {
+      "type": "execute",
+      "command": "npm start",
+      "explanation": "Allow starting the production server environment."
+    },
+    {
+      "type": "execute",
+      "command": "npm test",
+      "explanation": "Allow running the project test suite."
+    },
+    {
+      "type": "execute",
+      "command": "npm run lint",
+      "explanation": "Allow checking code style conventions with ESLint."
+    }
+  ]
 }

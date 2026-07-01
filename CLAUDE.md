@@ -9,8 +9,7 @@ npm run dev     # Start development server with watch mode on http://localhost:3
 npm start       # Start production server (without watch)
 npm test        # Run all tests using node --test
 npm run lint    # Check code style with ESLint
-node main.js    # Run the calculator app directly
-```
+node server.js  # Run the server application directly
 
 ## Conventions
 
