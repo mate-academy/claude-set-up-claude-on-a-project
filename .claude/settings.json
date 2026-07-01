@@ -1,24 +1,13 @@
 {
-  "permissions": [
-    {
-      "type": "execute",
-      "command": "npm run dev",
-      "explanation": "Allow starting the development server with watch mode."
-    },
-    {
-      "type": "execute",
-      "command": "npm start",
-      "explanation": "Allow starting the production server environment."
-    },
-    {
-      "type": "execute",
-      "command": "npm test",
-      "explanation": "Allow running the project test suite."
-    },
-    {
-      "type": "execute",
-      "command": "npm run lint",
-      "explanation": "Allow checking code style conventions with ESLint."
-    }
-  ]
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev)",
+      "Bash(npm start)",
+      "Bash(npm test)",
+      "Bash(npm run lint)"
+    ],
+    "deny": [
+      "Read(./.env)"
+    ]
+  }
 }
