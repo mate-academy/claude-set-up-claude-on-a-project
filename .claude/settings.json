@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm test*)",
+      "Bash(eslint*)",
+      "Bash(npm test:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Bash(git push --force:*)",
+      "Write(.git/hooks/)"
+    ],
+    "ask": [
+      "Bash(git push*)"
+    ]
+  }
+}

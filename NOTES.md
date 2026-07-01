@@ -1,0 +1,7 @@
+# NOTES: My Choices for CLAUDE.md and Permissions
+
+## Why this CLAUDE.md content? I deliberately included only conventions that appear in both the README's "Code Standards" (snake_case, named exports) plus an architecture note that summarizes how server.js, routes/, and db/store/ work together. Any one-off notes or generic dev practices were left out—shorter is stronger as the task says—and secrets are never stored here since .gitignore already protects `.env`.
+
+## What I deliberately omitted? No pasted long documents from code (the README's commands and file lists are discoverable anyway) no sensitive info. Generic development practice bullets like "write unit tests" were excluded because they're obvious in package.json scripts not part of the project rules per CLAUDE.md specs; instead, only concrete conventions that will help Claude without asking questions each time: snake_case vs camelCase and named exports over default exports.
+
+## Permission Rules Choices? The task doesn't explicitly require a settings.json yet but I'm deferring to what's listed in Definition of Done until asked since commit instructions say `.claude/settings.json` is part 4, not part 2 where CLAUDE.md lives. This keeps my notes focused on the two questions NOTES.md answers: what went into CLAUDE.md and why I cut obvious stuff like long docs that readers already find in README or package.json scripts; plus permission gaps—if a deny rule for .env reading isn't added, an agent could accidentally leak secrets from environment config files.
