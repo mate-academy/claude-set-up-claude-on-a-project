@@ -10,7 +10,7 @@ npm start       # Start production server (without watch)
 npm test        # Run all tests using node --test
 npm run lint    # Check code style with ESLint
 node server.js  # Run the server application directly
-
+```
 ## Conventions
 
 **Naming**: Use `snake_case` for variable and function names (e.g., `first_number`, not `firstNumber`).
