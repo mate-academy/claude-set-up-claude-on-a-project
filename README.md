@@ -1,3 +1,5 @@
+## This is a change to README for PR
+
 ## Set up Claude Code on a real project
 
 > This is the first project of the Claude Code course. Finish **Units 1 and 2** before you start.
