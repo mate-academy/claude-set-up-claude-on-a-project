@@ -1,0 +1,3 @@
+1. In `CLAUDE.md`, I included only repo-specific guidance: project purpose, CI expectations, core npm commands, Express architecture, routing conventions, test setup, and the `.env` note. I deliberately left out generic Node/Express advice, personal preferences, secrets, and long explanations so Claude gets concise, actionable context without noise. 
+
+2. I added permission rules to allow `npm test`, require confirmation for `git push`, and deny reading `./.env` or running `git push --force`. Without the deny rule, Claude could accidentally expose local secrets from `.env` or rewrite remote history with a force push, creating security and recovery risks. 
