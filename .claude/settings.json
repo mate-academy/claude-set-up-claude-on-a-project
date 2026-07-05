@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "You can run the command npm to run without ask"
+    ],
+    "deny": [
+      "You can't access to .env to see the private APIs",
+      "You can't use force-with-lease to push to the repo"
+    ],
+    "ask": [
+      "│   Ask alwayys before run git push command"
+    ]
+  }
+}
