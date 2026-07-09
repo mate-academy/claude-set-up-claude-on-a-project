@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project
 
 Starter Express API for the Claude Code course, with the required scaffoling in place: the app code
-(`server.js`, `routes/`, `db/`, `tests/`).
+(`server.js`, `routes/`, `db/`, `tests/`). 
 
 ## Commands
 
@@ -39,3 +39,4 @@ CI (`.github/workflows/`) runs `npm install`, `npm run lint`, and `npm test` on 
   status code (400, 404) rather than throwing.
 - New resources should follow the existing pattern: a router in `routes/`, mounted in `server.js`, with
   data access delegated to `db/store.js` (or an equivalent store module).
+- Time: hh:mm, and dates: dd.mm.yyyy
