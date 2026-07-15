@@ -44,7 +44,17 @@ npm run lint     # checks code style
    ```
    claude --version
    ```
-3. Open a terminal in the project folder.
+3. Get this repo onto your machine and open a terminal in the project folder. **Opening a terminal** (the app where you type commands):
+    -   **Mac** - press `Cmd + Space`, type "Terminal", press Enter.
+    -   **Windows** - open "Terminal" or "PowerShell" from the Start menu.
+    -   **Linux** - open your "Terminal" app (often `Ctrl + Alt + T`).**Getting into the project folder** - copy the repo to your machine, then move into it:
+
+```
+   git clone <your-repo-url>
+   cd <repo-folder>
+```
+
+`cd` means "change directory". To check you're in the right place, run `ls` (Mac/Linux) or `dir` (Windows) - you should see `server.js`, `package.json`, and the `routes`, `db`, and `tests` folders.
 
 ### Tasks
 
@@ -138,7 +148,7 @@ In a short `NOTES.md`, answer in a few sentences each:
    ```
    git push -u origin set-up-claude
    ```
-4. Open a Pull Request and submit it through the platform, which copies your branch for review.
+4. Open a Pull Request against the main repository, not your fork, and submit it through the platform, which copies your branch for review.
 
 Before you submit, make sure that:
 
