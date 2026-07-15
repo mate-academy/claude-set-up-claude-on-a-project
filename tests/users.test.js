@@ -30,3 +30,28 @@ test("POST /users with no body returns 400", async () => {
 
   assert.strictEqual(res.status, 400);
 });
+
+test("PUT /users/:id updates an existing user", async () => {
+  const res = await request(app)
+    .put("/users/1")
+    .send({ name: "Ada L.", email: "ada@new.example.com" });
+
+  assert.strictEqual(res.status, 200);
+  assert.strictEqual(res.body.id, 1);
+  assert.strictEqual(res.body.name, "Ada L.");
+  assert.strictEqual(res.body.email, "ada@new.example.com");
+});
+
+test("PUT /users/:id returns 404 for a user that does not exist", async () => {
+  const res = await request(app)
+    .put("/users/9999")
+    .send({ name: "Nobody", email: "nobody@example.com" });
+
+  assert.strictEqual(res.status, 404);
+});
+
+test("PUT /users/:id with no body returns 400", async () => {
+  const res = await request(app).put("/users/1").send({});
+
+  assert.strictEqual(res.status, 400);
+});
