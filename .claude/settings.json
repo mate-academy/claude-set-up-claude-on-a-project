@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm test)",
+      "Bash(git status)",
+      "Bash(git diff)",
+      "Bash(npm run lint)",
+      "Bash(npm run lint *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Read(./.env)"
+    ],
+    "ask": [
+      "Bash(git push *)"
+    ]
+  }
+}
