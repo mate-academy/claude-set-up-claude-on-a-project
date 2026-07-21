@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 // so the tests can import `app` without opening a real port.
 if (require.main === module) {
   app.listen(PORT, () => {
-    console.log(`API listening on http://localhost:${PORT}`);
+    console.log(`Server ready — listening on http://localhost:${PORT}`);
   });
 }
 

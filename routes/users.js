@@ -10,8 +10,8 @@ router.get("/", (req, res) => {
 
 // GET /users/:id — fetch a single user, or 404 if it doesn't exist
 router.get("/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const user = store.getUserById(id);
+  const userId = Number(req.params.id);
+  const user = store.getUserById(userId);
 
   if (!user) {
     return res.status(404).json({ error: "User not found" });
