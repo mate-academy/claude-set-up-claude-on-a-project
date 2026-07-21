@@ -24,4 +24,8 @@ function createUser({ name, email }) {
   return user;
 }
 
-module.exports = { getAllUsers, getUserById, createUser };
+function getUserCount() {
+  return users.length;
+}
+
+module.exports = { getAllUsers, getUserById, createUser, getUserCount };

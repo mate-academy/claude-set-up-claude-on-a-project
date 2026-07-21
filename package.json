@@ -1,6 +1,6 @@
 {
   "name": "claude-course-starter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Starter Express API for the Claude Code course projects.",
   "main": "server.js",
   "scripts": {
