@@ -71,7 +71,7 @@ Confirm you're signed in and Claude can see the project — ask "What's in this 
 #### 2. Generate a first CLAUDE.md
 
 Run:
-
+test 
 ```
 /init
 ```
