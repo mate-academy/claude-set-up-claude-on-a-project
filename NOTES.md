@@ -1,0 +1,4 @@
+I removed clutter from the commands, specific test commands aren't necessarily used, some parts of the architecture details were vague and therefore removed.
+Conventions were also trimmed, as some were too vague and didn't really suit the style I want claude to use. In settings, allow has includes npm run,test and lint.
+And deny has accessing the .env file and force pushing. These decisions were made to reduce clutter and include only essential parts of the claude.md and permissions align with what want claude to be able to do.
+Without this deny, claude could potential hardcode SECRETS to files which get pushed to the repo and force pushing could mean that development code is pushed to production.
