@@ -1,0 +1,2 @@
+- In `CLAUDE.md` I placed the most common commands, the most common conventions and a brief description of the architecture. I deliverately left out things that are temporary and doesn't help claude to do its job
+- I added a permission rule to allow running tests, a deny rule to force a git push and another one to not read the .env files and an Ask rule to request a git push. By not forcing the deny rules Claude can force git push commands and read the .env files.

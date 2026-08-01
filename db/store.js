@@ -24,4 +24,33 @@ function createUser({ name, email }) {
   return user;
 }
 
-module.exports = { getAllUsers, getUserById, createUser };
+let orders = [
+  { id: 1, userId: 1, item: "Keyboard", quantity: 1, status: "pending" },
+  { id: 2, userId: 2, item: "Monitor", quantity: 2, status: "shipped" },
+];
+
+let nextOrderId = 3;
+
+function getAllOrders() {
+  return orders;
+}
+
+function getOrderById(id) {
+  return orders.find((order) => order.id === id);
+}
+
+function createOrder({ userId, item, quantity, status = "pending" }) {
+  const order = { id: nextOrderId, userId, item, quantity, status };
+  nextOrderId += 1;
+  orders.push(order);
+  return order;
+}
+
+module.exports = {
+  getAllUsers,
+  getUserById,
+  createUser,
+  getAllOrders,
+  getOrderById,
+  createOrder,
+};
