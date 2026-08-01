@@ -1,0 +1,9 @@
+{
+    "theme": "dark",
+    "permissions": {
+    "defaultMode": "auto",
+    "allow": ["Bash(npm test:*)"],
+    "ask": ["Bash(git push:*)"],
+    "deny": ["Read(./.env)", "Bash(git push --force:*)"]
+  }
+}
