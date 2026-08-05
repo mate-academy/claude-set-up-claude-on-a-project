@@ -156,6 +156,8 @@ Before you submit, make sure that:
 - [ ] every line in your `CLAUDE.md` earns its place
 - [ ] your `NOTES.md` explains your choices
 
+# Testing Pull Request
+
 ---
 
 **How this is checked:** a reviewer opens your branch and works down the Definition of Done. The aim isn't a perfect file — it's a `CLAUDE.md` and permission set that would genuinely save time on this project, with clear reasoning behind what you kept and what you cut.
