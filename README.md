@@ -66,6 +66,31 @@ Start Claude in the project folder:
 claude
 ```
 
+### Claude API integration (optional)
+
+This repo includes a tiny integration to call Anthropic Claude via a local endpoint.
+
+1. Set your API key in the environment:
+
+```
+export CLAUDE_API_KEY="sk-..."
+```
+
+2. Start the server and POST a prompt:
+
+```bash
+npm install
+npm run dev
+
+# then in another terminal
+curl -s -X POST http://localhost:3000/claude \
+   -H "Content-Type: application/json" \
+   -d '{"prompt":"Write a one-line summary of this project."}' | jq
+```
+
+The endpoint returns JSON `{ "text": "..." }` on success. The client wrapper is in `services/claude.js`.
+
+
 Confirm you're signed in and Claude can see the project — ask "What's in this project?" and check the answer matches the files above.
 
 #### 2. Generate a first CLAUDE.md
