@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm test:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npx prettier:*)"
+    ],
+    "deny": ["Read(./.env)", "Bash(git push --force:*)"],
+    "ask": ["Bash(git push:*)"]
+  }
+}
