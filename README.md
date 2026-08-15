@@ -1,4 +1,4 @@
-## Set up Claude Code on a real project
+## Set up Claude Code on a real project - check
 
 > This is the first project of the Claude Code course. Finish **Units 1 and 2** before you start.
 
