@@ -11,3 +11,5 @@ The shared settings allow the safe, repeatable test and lint commands. A normal 
 ## Verification
 
 The committed configuration is ready for a fresh Claude Code session: `/memory` should list the root `CLAUDE.md`, and `/permissions` should show the allow, ask, and deny rules above. The Claude Code CLI is not available in this environment, so those two interactive checks remain a local verification step after installation and sign-in.
+
+GitHub Actions validates the repository with lint and test checks on every push and pull request.
