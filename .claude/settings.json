@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(git status)",
-      "Bash(ls *)"
+      "Bash(ls *)",
+      "Bash(npm test:*)"
 
     ],
     "ask": [
