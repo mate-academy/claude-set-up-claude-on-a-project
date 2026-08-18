@@ -9,8 +9,8 @@ intentionally small: one resource (`users`), an in-memory store instead of a dat
 enough tooling (lint, tests, CI) to be a realistic target for setting up Claude Code permissions and
 guidance — not a production app.
 
-`hello.py` may be present in this directory as an untracked, unrelated scratch file (`git status`
-will show it, if so) — it is not part of this project; ignore it unless asked about it directly.
+`hello.py` is a committed scratch script (set intersection/union demo) unrelated to the Express
+project — ignore it unless asked about it directly.
 
 ## Commands
 
