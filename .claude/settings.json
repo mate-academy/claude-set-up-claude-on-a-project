@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Run npm test"
+    ],
+    "deny": [
+      "Do a git force push",
+      "Read .env extension files"
+    ],
+    "ask": [
+      "Do a git push command"
+    ]
+  }
+}
