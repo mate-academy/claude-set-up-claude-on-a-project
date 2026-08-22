@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm test:*)",
+      "Bash(node --test:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run dev)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Bash(git push --force:*)"
+    ],
+    "ask": []
+  }
+}
