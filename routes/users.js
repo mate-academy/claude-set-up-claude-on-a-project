@@ -1,3 +1,4 @@
+// use uppercase letter with dog names
 const express = require("express");
 const store = require("../db/store");
 
