@@ -14,7 +14,7 @@ On your branch of this repo:
 - a `.claude/settings.json` with your permission rules
 - a short `NOTES.md` explaining your choices
 
-...plus Claude Code installed, signed in, and confirmed to load your `CLAUDE.md`.
+...and Claude Code installed, signed in, and confirmed to load your `CLAUDE.md`.
 
 You are **not** changing the app code. The Express API below is here so you have a real project to set Claude up on.
 
