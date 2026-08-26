@@ -2,10 +2,6 @@
 
 Jednoduché Express API pro správu uživatelů, používané jako cvičný projekt pro kurz Claude Code.
 
-## Project
-
-Jednoduché Express API používané jako cvičný projekt pro kurz Claude Code. Nejde o produkční aplikaci.
-
 ## Commands
 
 * `npm run dev` — spustí vývojový server na http://localhost:3000
