@@ -1,0 +1,3 @@
+In my CLAUDE.md I kept most of the lines /init generated, since they described the project accurately, and reorganized them under Commands, Conventions, and Architecture.
+
+For permissions: I allowed npm test, npm run lint, npm run dev, and git status since they're safe and routine. I set git push to ask, since I want to review before anything goes to the remote. I denied git push --force, PowerShell, and reading .env, since those are irreversible or expose secrets.
