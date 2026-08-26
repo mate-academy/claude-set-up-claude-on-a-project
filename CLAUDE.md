@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Tento soubor poskytuje pokyny pro Claude Code při práci s tímto repozitářem.
+Jednoduché Express API pro správu uživatelů, používané jako cvičný projekt pro kurz Claude Code.
 
 ## Project
 
@@ -14,8 +14,8 @@ Jednoduché Express API používané jako cvičný projekt pro kurz Claude Code.
 
 ## Conventions
 
-* Přístup k datům vždy probíhá přes `db/store.js`, nikdy přímo v souborech v `routes/`.
-* Routy ověřují vstupy a při chybě vracejí JSON ve formátu `{ error: "..." }` se správným HTTP stavovým kódem.
+* Používej `db/store.js` pro přístup k datům, ne přímý přístup k datům v souborech v `routes/`.
+* Používej JSON odpovědi ve formátu `{ error: "..." }` při chybách, ne vyhazování výjimek z rout.
 
 ## Architecture
 
