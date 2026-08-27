@@ -6,4 +6,4 @@ Omiti deliberadamente temas como el lenguaje de programacion, porque es algo que
 Claude al usar el /init, ya sabria mientras lee los archivos.
 ¿Qué reglas de permisos agregaste y qué podría salir mal sin tu regla de denegación?
 Agureur las reglas basicas al archivo, esta permitido usar el comando allow: "test", se debe preguntar ask: git push, para evitar que se genere un cambio irreversible sin mi supervision
-y finalmente esta denegado leer el archivo .env con secretos como claves de API y forzar el push.
+y finalmente esta denegado leer el archivo .env con secretos como claves de API y forzar el push..

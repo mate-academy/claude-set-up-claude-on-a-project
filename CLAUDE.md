@@ -28,3 +28,4 @@ CI (`.github/workflows/ci.yml`) runs `npm install`, `npm run lint`, and `npm tes
 - Route handlers validate input and return JSON error bodies (`{ error: "..." }`) with the appropriate status code (400, 404) rather than throwing.
 - Data access stays in `db/store.js`; routes call its exported functions (`getAllUsers`, `getUserById`, `createUser`) instead of reading/writing the `users` array directly.
 - Usa camelcase para nombrar las variables y los nombres deben ser descriptivos no por defectos.
+
