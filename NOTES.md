@@ -18,3 +18,24 @@ notes don't mix.
 Project-level permissions: `npm test`, `npm run dev`, and `npm run lint` are
 auto-allowed; `git push` requires confirmation; reading `.env`, force-pushing,
 and `rm -rf` are denied.
+
+### Why these deny rules
+Without them, Claude could read `.env` and expose secrets (API keys, database
+credentials) in its output; run `git push --force` and overwrite commits
+someone else has already pushed; or run `rm -rf` and delete files with no way
+to recover them. Denying these outright means the risk is closed off entirely,
+rather than relying on Claude to catch every dangerous case itself.
+
+## What was deliberately left out of CLAUDE.md
+- No secrets or credentials — CLAUDE.md is checked into git, so anything in
+  it is visible to everyone with repo access.
+- No pasted external documents (design docs, tickets, chat logs) — CLAUDE.md
+  is for durable project facts, not one-off reference material that will go
+  stale.
+- No one-off tasks or TODOs — CLAUDE.md loads on every session; task-specific
+  instructions belong in the conversation or a plan, not in standing project
+  memory.
+
+## Verifying the setup
+- `/memory` shows that CLAUDE.md has been loaded for the session.
+- `/permissions` shows the allow/ask/deny rules currently in effect.

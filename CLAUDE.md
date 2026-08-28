@@ -7,9 +7,9 @@ A lightweight REST API for managing users with health check endpoints.
 
 
 ## Conventions
-- Use Express.js for all routes
-- One route file per resource in `routes/`
-- All data access goes through `db/store.js`
+- Use Express.js routes, not raw `http` handlers
+- Use one route file per resource in `routes/`, not multiple resources per file
+- Use `db/store.js` for all data access, not direct reads/writes elsewhere
 
 
 ## Architecture
