@@ -1,23 +1,40 @@
-# NOTES
+# Notes
 
-## CLAUDE.md — what I kept and what I cut
+## What went into CLAUDE.md, and what didn't
 
-**Kept.** A one-line description of the project. The commands from `package.json`, including how to run a single test file, so Claude never guesses at tooling. Conventions written as rules that can be followed without asking a question — CommonJS not ESM, one router per resource, all data access through `db/store.js`, and the importable-not-self-starting `server.js` pattern that lets the tests import `app` without binding a port. And a short TOGAF BDAT architecture note, one line per domain.
+The file answers the questions I'd otherwise re-answer in every session: how to run the thing, the rules Claude can't infer from a single file, and where code belongs.
 
-**Cut.** Per-file walkthroughs of `server.js`, the two routers and the store: all of it is faster to read in the code than in a document that will drift out of date. Maintenance comments addressed to human editors, which reload into context every session and teach Claude nothing about the code. Speculative infrastructure — an earlier draft named a Cloudflare production stack (Workers, D1, KV, `wrangler`), none of which exists in this repo; a CLAUDE.md that asserts infrastructure the project does not have is worse than one that stays silent, because Claude will act on it. And any secret or env value; the file points at `.env.example` and stops there.
+The conventions are the part that earns its place. That the project is CommonJS is visible in any one file, but *why* ESM breaks is not — `.eslintrc.json` sets `sourceType: "script"`, and CI runs `npm run lint` before `npm test`, so an `import` statement fails the build rather than the runtime. Same with the supertest rule: `server.js` guards `listen()` behind `require.main === module` specifically so tests can import `app`, and a test that starts its own listener will pass locally and hang in CI. Both are cheap to state and expensive to rediscover.
 
-The test I applied to each line: will this still be true in three months, and would Claude do the wrong thing without it? Anything failing both was cut.
+Left out deliberately:
+
+- The route inventory (`GET /users`, `POST /users`, `/health`). Claude reads `routes/` faster than I can maintain a list that drifts.
+- Anything from `.env.example`. Config values and secrets don't belong in a file that gets loaded into every session's context.
+- Install and clone instructions. That's onboarding for a human, not standing context for a model.
+- The store's implementation detail — except the one consequence that changes behaviour: data resets on restart, so ids aren't stable across runs.
+
+The whole file is under 200 words. Everything in it changes what Claude does; nothing is there for completeness.
 
 ## Permission rules
 
-**allow** — `npm test`, `npm run lint`, `npm run dev`, `npm start`, `node --test`, and read-only git (`status`, `diff`, `log`). These run constantly and change nothing, so a prompt for each is friction with no safety return.
+```json
+"allow": ["Bash(npm test:*)", "Bash(npm run lint:*)"]
+"ask":   ["Bash(git push:*)"]
+"deny":  ["Read(./.env)", "Bash(git push --force:*)"]
+```
 
-**ask** — `git push`. Outward-facing, and worth a deliberate confirm each time.
+`npm test` and `npm run lint` are allowed because they're read-only, fast, and exactly what I want Claude running unprompted after a change — every approval prompt on those trains me to click "yes" without reading, which is how a genuinely destructive prompt gets approved.
 
-**deny** — `Read(./.env)` and `git push --force`. Without the first, Claude can pull real credentials into the transcript, from where they can reach a summary, a commit message or a pasted snippet; denying the read keeps secrets out of context in the first place rather than relying on nothing going wrong downstream. Without the second, a single command rewrites shared branch history — and unlike almost anything else Claude does, that is not recoverable from the working tree.
+`Read(./.env)` is denied rather than asked. `.env` is where a real `DATABASE_URL` lives, and without the deny rule a plausible-sounding request ("check the config") pulls credentials into the session transcript, where they're out of my control — logged, and potentially echoed back into a file or a commit. Prompting me wouldn't help: the request would look reasonable at the moment I'm asked. `.env.example` stays readable, which covers every legitimate reason to look.
 
-`.claude/settings.json` is committed so the rules travel with the repo. Personal overrides stay in the git-ignored `.claude/settings.local.json`.
+`git push --force` is denied because it destroys history on a shared branch and can't be undone from the client. Plain `git push` is on `ask` instead of `deny` — I do want Claude pushing, but only when I've read what's in the commit.
 
 ## Verification
 
-In a fresh session: `/memory` shows this `CLAUDE.md` loaded, `/permissions` lists the allow / ask / deny rules above, and asking "how do I run the tests here?" is answered from the file without further explanation.
+`/memory` lists `CLAUDE.md` as loaded at the project root, and `/permissions` shows the allow, ask and deny rules above. Asked "How do I run the tests here?" in a fresh session, Claude answers `npm test` from the file without reading `package.json`.
+
+## One thing found along the way
+
+`.gitignore` doesn't work. Every pattern after the first is indented, and Git treats leading whitespace as part of the pattern — so `   .env` matches a file whose name starts with three spaces, and `.env` is not ignored at all. `git check-ignore -v .env` exits 1, confirming it. The same applies to `.claude/settings.local.json`, which is supposed to stay off the repo.
+
+I've left the fix out of this PR to keep it to the three deliverables, but the deny rule above is doing more work than intended: it's currently the only thing standing between `.env` and a commit.

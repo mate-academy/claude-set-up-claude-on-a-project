@@ -1,27 +1,21 @@
-# CLAUDE.md
+# claude-course-starter
 
-Express 4 REST API over an in-memory store: `/users` (list, fetch, create) and `/health` liveness. Reference project for the Claude Code course.
+Express 4 JSON API over an in-memory store — no database, no build step.
 
 ## Commands
 
-- `npm run dev` — watch mode (`node --watch server.js`); port 3000 or `$PORT`
-- `npm test` — full suite (`node --test`)
-- `node --test tests/users.test.js` — a single test file
-- `npm run lint` — ESLint. CI runs lint + test on Node 22 and must pass.
+- `npm run dev` — start the API on :3000 with `node --watch`
+- `npm test` — run the `node:test` suite in `tests/`
+- `npm run lint` — ESLint; CI runs lint before tests, so lint failures block the PR
 
 ## Conventions
 
-- CommonJS (`require`/`module.exports`), not ESM.
-- One router per resource in `routes/`, mounted by path in `server.js`. A new resource is a new file, not another branch inside an existing one.
-- All user state is reached through `db/store.js`. Routes call store functions and never touch the array.
-- Routes own validation and status codes; the store owns data. Keep that split.
-- `server.js` exports `app` and calls `listen()` only under `require.main === module`, so tests import the app without binding a port. Preserve this when editing startup.
-- Tests use `node:test` + `assert` + `supertest` against the imported app, one behaviour per `test()`.
-- Config comes from environment variables (`PORT`). Secrets live in git-ignored `.env`; the template is `.env.example`.
+- CommonJS only (`require` / `module.exports`). `.eslintrc.json` parses as `script`, so ESM `import` fails lint.
+- One router per resource in `routes/`, mounted in `server.js`. Add a new file there rather than a handler in `server.js`.
+- Routes read and write data only through `db/store.js` — no module-level state in `routes/`.
+- Validate input in the route and return a JSON `{ error: "..." }` with 400 or 404; don't throw.
+- Tests import `app` from `server.js` and drive it with supertest — never open a real port in a test.
 
-## Architecture (TOGAF BDAT)
+## Architecture
 
-- **Business** — one capability: manage users and report service liveness, for HTTP clients.
-- **Data** — `User { id, name, email }`. `db/store.js` is the system of record: an in-memory array seeded with two users, `id` auto-incremented, wiped on restart. It is the seam where a real database would be substituted.
-- **Application** — `server.js` is the composition root (JSON body parsing, mounts the routers); `routes/` holds HTTP concerns only; `db/store.js` owns state.
-- **Technology** — Node 22, Express 4, no build step. CI is GitHub Actions (`.github/workflows/ci.yml`) on push and pull_request. No deployment target is configured.
+`server.js` builds the app, mounts `/users` and `/health`, and calls `listen()` only when run directly, so tests can import `app` without binding a port. `db/store.js` is an in-memory array with a module-level id counter: data resets on every restart, and nothing may assume persistence or stable ids across runs.
