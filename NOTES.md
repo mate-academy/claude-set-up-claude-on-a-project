@@ -2,37 +2,22 @@
 
 ## CLAUDE.md — what I kept and what I cut
 
-**Kept**
-- A one-line description of the project (starter Express user/health API).
-- **Commands** taken straight from `package.json`, including how to run a single
-  test (`node --test tests/users.test.js`), so Claude never guesses tooling.
-- **Conventions** written as followable rules, not vibes: CommonJS (not ESM),
-  one router per resource in `routes/`, all data access through `db/store.js`,
-  and the "app is importable, only listens when run directly" pattern that keeps
-  the tests able to import `app` without opening a port.
-- **Architecture** as a short TOGAF-structured section (Business / Data /
-  Application / Technology), with Cloudflare noted as the production/technology
-  layer and `db/store.js` flagged as the seam where a real store (D1/KV) slots in.
+**Kept.** A one-line description of the project. The commands from `package.json`, including how to run a single test file, so Claude never guesses at tooling. Conventions written as rules that can be followed without asking a question — CommonJS not ESM, one router per resource, all data access through `db/store.js`, and the importable-not-self-starting `server.js` pattern that lets the tests import `app` without binding a port. And a short TOGAF BDAT architecture note, one line per domain.
 
-**Left out**
-- Line-by-line file descriptions and anything trivially discoverable by reading
-  the code, per "cut anything obvious."
-- One-off tasks and session history (branch/PR steps live in git, not here).
-- Secrets and env values — those stay in git-ignored `.env`; the file only points
-  at `.env.example`.
+**Cut.** Per-file walkthroughs of `server.js`, the two routers and the store: all of it is faster to read in the code than in a document that will drift out of date. Maintenance comments addressed to human editors, which reload into context every session and teach Claude nothing about the code. Speculative infrastructure — an earlier draft named a Cloudflare production stack (Workers, D1, KV, `wrangler`), none of which exists in this repo; a CLAUDE.md that asserts infrastructure the project does not have is worse than one that stays silent, because Claude will act on it. And any secret or env value; the file points at `.env.example` and stops there.
 
-## Permission rules — and what the deny rule prevents
+The test I applied to each line: will this still be true in three months, and would Claude do the wrong thing without it? Anything failing both was cut.
 
-- **allow:** the everyday, safe commands — `npm test`/`lint`/`dev`/`start`,
-  `node --test`, and read-only git (`status`/`diff`/`log`). These run constantly
-  and never change anything, so approving each one is pure friction.
-- **ask:** `git push` — outward-facing and worth a deliberate confirm each time.
-- **deny:** `Read(./.env)` and `git push --force`.
-  - Without the `.env` deny, Claude could read real secrets into the transcript
-    (and potentially into a summary or a commit) — a credential-leak path.
-  - Without the force-push deny, a single bad command could rewrite or erase
-    shared branch history irrecoverably.
+## Permission rules
+
+**allow** — `npm test`, `npm run lint`, `npm run dev`, `npm start`, `node --test`, and read-only git (`status`, `diff`, `log`). These run constantly and change nothing, so a prompt for each is friction with no safety return.
+
+**ask** — `git push`. Outward-facing, and worth a deliberate confirm each time.
+
+**deny** — `Read(./.env)` and `git push --force`. Without the first, Claude can pull real credentials into the transcript, from where they can reach a summary, a commit message or a pasted snippet; denying the read keeps secrets out of context in the first place rather than relying on nothing going wrong downstream. Without the second, a single command rewrites shared branch history — and unlike almost anything else Claude does, that is not recoverable from the working tree.
+
+`.claude/settings.json` is committed so the rules travel with the repo. Personal overrides stay in the git-ignored `.claude/settings.local.json`.
 
 ## Verification
-- `/memory` shows this `CLAUDE.md` loaded.
-- `/permissions` shows the allow / ask / deny rules above.
+
+In a fresh session: `/memory` shows this `CLAUDE.md` loaded, `/permissions` lists the allow / ask / deny rules above, and asking "how do I run the tests here?" is answered from the file without further explanation.
