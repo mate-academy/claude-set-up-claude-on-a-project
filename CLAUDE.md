@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-A minimal Express REST API (course starter project) with in-memory data storage — no database, no auth, no build step. It's importante to highlight that this is a learning project and I won't be touching the code.
+A minimal Express REST API with in-memory data storage — no database, no auth, no build step. 
 
 ## Commands
 
