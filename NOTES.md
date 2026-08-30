@@ -21,3 +21,7 @@ Left out:
 - `deny`: reading `.env` (keeps real secrets out of context even if I paste an insecure prompt) and `git push --force` (rewrites shared history; without this rule, an agent following a bad instruction — or a prompt injection — could force-push over teammates' work with no confirmation).
 
 Without the deny rule specifically, the main risk is an accidental or induced `git push --force` silently discarding remote commits, since `ask` rules can be talked past in ways an explicit `deny` cannot.
+
+## Verification
+
+I confirmed that Claude Code successfully loaded `CLAUDE.md` by running `/memory` in a session started in this repo, and checked that the permission rules from `.claude/settings.json` were active by running `/permissions`.
