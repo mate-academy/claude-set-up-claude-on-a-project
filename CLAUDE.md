@@ -14,8 +14,8 @@ Starter Express REST API for the Claude Code course.
 ## Conventions
 
 - Validate input in route handlers and return JSON errors with appropriate HTTP status codes; do not add shared error-handling middleware.
-- Keep one router file per resource in `routes/`; do not define resource routes directly in `server.js`.
-- Keep application data in `db/store.js`; do not store data directly in route modules.
+- Use one router file per resource in `routes/`; do not define resource routes directly in `server.js`.
+- Use `db/store.js` for application data; do not store data directly in route modules.
 - Prefix intentionally unused arguments with `_` to satisfy ESLint.
 
 ## Architecture

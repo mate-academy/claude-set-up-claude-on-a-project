@@ -8,6 +8,10 @@ I left out the generic "this file provides guidance to Claude Code" preamble, `n
 
 ## 2. Permissions (`.claude/settings.json`)
 
-**Allow:** `npm test`, `npm run lint`, `npm run dev`, and read-only git commands (`status`, `diff`, `log`). **Ask:** `git commit`, `git push`, `npm install`. **Deny:** reading `.env`, `git push --force`, and `rm -rf`.
+**Allow:** `npm test`, `npm run lint`, `npm run dev`, and read-only git commands (`status`, `diff`, `log`). **Ask:** `git commit`, `git push`, `npm install`. **Deny:**
 
-Without the deny rule, Claude could read `.env` and leak real secrets into chat or a commit, run `git push --force` and overwrite remote history (including other people's commits), or run `rm -rf` and delete files with no local recovery. Denying these outright removes the risk instead of relying on Claude judging each case correctly every time.
+- `Read(./.env)` — without this, Claude could read real secrets from `.env` and leak them into chat output or an accidental commit.
+- `Bash(git push --force:*)` — without this, Claude could overwrite remote history, including commits other people pushed.
+- `Bash(rm -rf:*)` — without this, Claude could delete files or directories with no local recovery path.
+
+Each of these is denied outright rather than left to a per-case judgment call, because the cost of Claude getting one of these wrong once is high and irreversible.
