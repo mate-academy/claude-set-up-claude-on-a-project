@@ -10,7 +10,7 @@ I left out anything Claude can already derive by reading the code — full route
 
 In `.claude/settings.json` I added:
 
-- **allow**: `Bash(npm test:*)` — a safe, frequently-run command with no side effects, so Claude doesn't have to ask every time.
+- **allow**: `Bash(npm test:*)` and `Bash(npm run lint:*)` — both are safe, frequently-run commands with no side effects, so Claude doesn't have to ask every time.
 - **ask**: `Bash(git push:*)` — pushing affects the shared remote, so I want a confirmation prompt each time rather than a blanket allow or deny.
 - **deny**: `Read(./.env)` and `Bash(git push --force:*)` — without the `Read(./.env)` deny, Claude could read real secrets (API keys, credentials) into context and potentially leak them into a response, a commit, or a shared session. Without the force-push deny, Claude could overwrite remote history on a shared branch, destroying other people's commits with no easy recovery.
 

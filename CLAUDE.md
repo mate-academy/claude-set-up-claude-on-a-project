@@ -18,3 +18,4 @@ Starter Express API used for the Claude Code course — a small REST API that ex
 - `server.js` — entry point; mounts routers and starts the server.
 - `routes/` — one file per resource (`users.js`, `health.js`).
 - `db/store.js` — in-memory data access layer; no real database, resets on restart.
+- Default port is `3000` (override with `PORT`).
