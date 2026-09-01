@@ -26,7 +26,7 @@ You are **not** changing the app code. The Express API below is here so you have
 - `db/store.js` — a tiny in-memory data helper
 - `tests/users.test.js` — a sample test
 - `.env.example` — sample config; real secrets would live in `.env` (which is git-ignored)
-- `.gitignore` — already ignores `node_modules`, `.env`, and `.claude/settings.local.json`
+- `.gitignore` — already ignores `node_modules/`, `.env`, and `.claude/settings.local.json`
 
 Run it once to see it work:
 

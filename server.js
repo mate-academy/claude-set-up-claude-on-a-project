@@ -10,6 +10,7 @@ app.use(express.json());
 app.use("/users", usersRoutes);
 app.use("/health", healthRoutes);
 
+// Default port used when PORT isn't set in the environment.
 const PORT = process.env.PORT || 3000;
 
 // Only start the server when this file is run directly (e.g. `npm run dev`),
