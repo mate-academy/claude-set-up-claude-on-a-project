@@ -6,6 +6,7 @@ Starter Express API used for the Claude Code course — a small REST API that ex
 
 - `npm run dev` — start the API with auto-reload (`node --watch server.js`)
 - `npm test` — run tests (Node's built-in `node:test` + `supertest`, not Jest/Mocha)
+- `npm run lint` — check code style with ESLint
 
 ## Conventions
 
