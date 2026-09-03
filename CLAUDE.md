@@ -23,5 +23,5 @@ A minimal Express API (in-memory data, no database) used as the starter project 
 
 ## Conventions
 
-- Double quotes and semicolons throughout; no existing Prettier config, so match surrounding style by hand.
-- ESLint extends `eslint:recommended` with `no-unused-vars` as a warning (Express middleware params `req`/`res`/`next` are exempted).
+- Use double quotes and semicolons, not single quotes or omitted semicolons.
+- Use ESLint's `eslint:recommended` rules, not custom overrides — resolve unused-variable warnings rather than disabling them, except for the exempted Express middleware params (`req`/`res`/`next`).
