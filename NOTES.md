@@ -11,3 +11,7 @@ I left out one-off notes and anything specific to my local setup since this shou
 
 Without the deny rule for .env, Claude could accidentally read and potentially expose my API 
 keys and database credentials.
+
+## Verification
+I verified /memory shows CLAUDE.md as loaded and /permissions displays my allow/deny/ask rules.
+
