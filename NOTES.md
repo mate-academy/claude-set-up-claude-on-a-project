@@ -14,4 +14,6 @@ I configured `git push` to require confirmation and denied reading `.env` files 
 
 ## Verification
 
-I verified that Claude loads the project's `CLAUDE.md` using `/memory` and that the configured permission rules appear in `/permissions`.
+I started a new Claude Code session and verified that `/memory` showed the project's `CLAUDE.md` as loaded.
+
+I also ran `/permissions` and confirmed that the configured allow, ask, and deny rules were active.
