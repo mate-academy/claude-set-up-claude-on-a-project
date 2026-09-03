@@ -22,11 +22,6 @@ npm run lint
 - Keep changes small and focused, not large refactors.
 - Use the existing coding style, not inconsistent formatting.
 
-## Verification
-
-I started a new Claude Code session and verified that `/memory` showed the project's `CLAUDE.md` as loaded.
-
-I also ran `/permissions` and confirmed that the configured allow, ask, and deny rules were active.
 
 ## Architecture
 
