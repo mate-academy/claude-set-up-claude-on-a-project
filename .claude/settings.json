@@ -1,4 +1,3 @@
-## Give claude allow, ask, and deny permissions
 {
   "permissions": {
     "allow": ["Bash(npm test:*)"],
