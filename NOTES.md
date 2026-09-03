@@ -1,4 +1,13 @@
-CLAUDE.md was generated automatically after init claude
-I put description about project, command, conventions and architecture in Claude.md
-because it is common rules for this project.
-Permissions I put in .claude/settings.json included allow, ask and deny commands
+## CLAUDE.md choices
+I included the project description, all common commands (dev, test, lint), 
+conventions (CommonJS, node test runner, route structure), and architecture (file organization). 
+I alse included Error Handling
+I left out one-off notes and anything specific to my local setup since this should be shared.
+## Permission rules
+- allow: npm test — lets Claude run tests without asking
+- deny: Read .env — prevents accidental secret exposure
+- ask: git push — I want to confirm before pushing
+
+
+Without the deny rule for .env, Claude could accidentally read and potentially expose my API 
+keys and database credentials.

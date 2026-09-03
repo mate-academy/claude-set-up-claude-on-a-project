@@ -28,3 +28,7 @@ CI (`.github/workflows/ci.yml`) runs `npm run lint` then `npm test` on Node 22 f
 - `routes/` — one file per resource (`users.js`, `health.js`), each exporting an `express.Router()`.
 - `db/store.js` — the single data-access layer: an in-memory array with `getAllUsers` / `getUserById` / `createUser`; data resets on every restart. Swapping in a real database should mean changing only this file.
 - `tests/` — HTTP-level tests that exercise the app through `supertest`.
+
+## Error Handling
+- When requirements are ambiguous: Design using the most common patterns and document assumptions
+- When technology stack is unspecified: Apply the default recommended stack based on project scale
