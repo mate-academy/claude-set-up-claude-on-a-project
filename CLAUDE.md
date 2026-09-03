@@ -15,11 +15,18 @@ npm run lint
 
 ## Conventions
 
-- Follow the existing Express.js project structure.
-- Keep one resource per route file in the `routes/` directory.
-- Access application data only through `db/store.js`.
-- Do not modify `.env` or commit secrets.
-- Keep changes small and focused.
+- Use the existing Express.js project structure, not a custom layout.
+- Use one route file per resource in the `routes/` directory, not multiple resources in the same file.
+- Use `db/store.js` for all data access, not direct data manipulation inside route handlers.
+- Use environment variables for configuration, not hard-coded values or committed secrets.
+- Keep changes small and focused, not large refactors.
+- Use the existing coding style, not inconsistent formatting.
+
+## Verification
+
+I started a new Claude Code session and verified that `/memory` showed the project's `CLAUDE.md` as loaded.
+
+I also ran `/permissions` and confirmed that the configured allow, ask, and deny rules were active.
 
 ## Architecture
 
