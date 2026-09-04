@@ -15,19 +15,21 @@ Starter Express API for the Claude Code course projects — a minimal REST API w
 
 ## Conventions
 
-- **CommonJS modules** — use `require`/`module.exports`, not ES modules
-- **Express router pattern** — one route file per resource in `routes/` (e.g., `users.js`, `health.js`)
-- **Data access through `db/store.js`** — never access the `users` array directly from route handlers
-- **Tests use `supertest`** — import `app` from `server.js` (which exports the Express app without starting the server when imported)
+- use `require`/`module.exports`
+- not ES modules
+- one route file per resource in `routes/` (e.g., `users.js`, `health.js`)
+— never access the `users` array directly from route handlers
 
 ## Architecture
 
-- **`server.js`** — entry point; creates Express app, mounts routers at `/users` and `/health`, exports `app` for testing, only listens on port when run directly (`require.main === module`)
-- **`routes/users.js`** — REST endpoints for users: `GET /users`, `GET /users/:id`, `POST /users` (validates `name` and `email` required)
-- **`routes/health.js`** — simple liveness check: `GET /health` returns `{ status: "ok" }`
-- **`db/store.js`** — in-memory data store with `getAllUsers()`, `getUserById(id)`, `createUser({ name, email })`; data resets on server restart
-- **`tests/users.test.js`** — sample tests covering health endpoint, user listing, 404 for missing user, 400 for invalid POST body
-- **CI** (`.github/workflows/ci.yml`) — runs on push/PR: installs deps, runs lint, runs tests on Node 22
+Request flow: client → `server.js` (Express app) → router in `routes/` → `db/store.js`. Data lives in memory only.
+
+- **`server.js`** — app entry; mounts routers at `/users` and `/health`; exports `app` for tests; only binds a port when run directly (`require.main === module`)
+- **`routes/users.js`** — `GET /users`, `GET /users/:id`, `POST /users`; validates `name` and `email` on POST
+- **`routes/health.js`** — `GET /health` returns `{ status: "ok" }`
+- **`db/store.js`** — in-memory store; exposes `getAllUsers`, `getUserById`, `createUser`; data resets on restart
+- **`tests/users.test.js`** — pins the contract for health, user listing, 404 on missing user, 400 on invalid POST
+- **CI** (`.github/workflows/ci.yml`) — installs deps, lints, and runs tests on Node 22
 
 ## Environment
 
