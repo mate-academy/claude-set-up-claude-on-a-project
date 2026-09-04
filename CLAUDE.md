@@ -1,8 +1,4 @@
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-A minimal Express REST API (`/users`, `/health`) used as the practice codebase for the Claude Code course. It exists so course exercises have a real project to work on; the app code itself is not the deliverable.
+## A minimal Express REST API (`/users`, `/health`) used as the practice codebase for the Claude Code course. It exists so course exercises have a real project to work on; the app code itself is not the deliverable.
 
 ## Commands
 
@@ -17,7 +13,7 @@ CI (`.github/workflows/ci.yml`) runs `npm run lint` then `npm test` on Node 22 f
 ## Conventions
 
 - Use `require` / `module.exports` (CommonJS), not ESM `import`. ESLint is configured with `sourceType: "script"`.
-- Use the built-in `node --test` runner and `node:assert` for tests, with `supertest` for HTTP assertions. Do not add Jest, Mocha, or other test frameworks.
+- Use `node --test` runner and `node:assert` for tests, with `supertest` for HTTP assertions, do not use Jest, Mocha, or other test frameworks.
 - Import the app from `server.js` in tests — it exports `app` without calling `listen()` unless run directly, so tests never open a real port.
 - Add a new resource as its own file in `routes/`, mount it in `server.js` with `app.use("/<resource>", ...)`, and reach data only through `db/store.js` — routes never touch the data array directly.
 - Route handlers validate required fields and return `{ error: "..." }` with an appropriate status (`400` bad input, `404` not found), matching the existing handlers in `routes/users.js`.
