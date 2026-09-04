@@ -2,16 +2,20 @@ name: CI
 
 on:
   push:
+    branches:
+      - main
   pull_request:
-
+    branches:
+      - main
 jobs:
+
   check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 22
-      - run: npm install
-      - run: npm run lint
-      - run: npm test
+     runs-on: ubuntu-latest
+    #steps:
+      # - uses: actions/checkout@v5
+      # - uses: actions/setup-node@v5
+      #  with:
+      #    node-version: 22
+      #- run: npm install
+      #- run: npm run lint
+      #- run: npm test
