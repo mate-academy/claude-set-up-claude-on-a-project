@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Description
 
-Starter Express API for the Claude Code course projects — a minimal REST API with `/users` and `/health` endpoints, using an in-memory data store.
+Starter Express API for the Claude Code course projects — a minimal REST API, using an in-memory data store.
 
 ## Commands
 
@@ -15,10 +15,10 @@ Starter Express API for the Claude Code course projects — a minimal REST API w
 
 ## Conventions
 
-- use `require`/`module.exports`
-- not ES modules
-- one route file per resource in `routes/` (e.g., `users.js`, `health.js`)
-— never access the `users` array directly from route handlers
+- use `require`/`module.exports` (CommonJS)
+- not ES modules (`import`/`export`)
+- use one route file per resource in `routes/` (e.g., `users.js`, `health.js`)
+- not access the `users` array directly from route handlers
 
 ## Architecture
 
