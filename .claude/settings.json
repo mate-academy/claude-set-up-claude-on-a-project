@@ -1,7 +1,15 @@
 {
   "permissions": {
-    "allow": ["Bash(npm test:*)"],
-    "ask": ["Bash(git push:*)"],
-    "deny": ["Read(./.env)", "Bash(git push --force:*)"]
+    "allow": [
+      "Bash(npm test:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Bash(git push --force:*)"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "Deny read .env"
+    ]
   }
 }

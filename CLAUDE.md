@@ -1,9 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-A minimal Express API (users + health endpoints) backed by an in-memory store, used as a teaching project for the Claude Code course.
-
+This file includes the changes to the project Claude file to allow for claude to know what to do, irrespective of the developer or specific topic.
 ## Commands
 
 - `npm install` — install dependencies
@@ -20,6 +17,5 @@ A minimal Express API (users + health endpoints) backed by an in-memory store, u
 - Config values (e.g. `PORT`) are read from `process.env`; `.env.example` documents the shape and real values would live in a git-ignored `.env`.
 
 ## Conventions
-
-- Routes validate input and return JSON error bodies (`{ error: "..." }`) with the appropriate status code (400 for missing fields, 404 for not found) rather than throwing.
+- Use res.status().json() for errors, not throw statements" (tells Claude what to do)
 - Unused-argument lint warnings are suppressed for `req`, `res`, `next`, and `_`-prefixed names (see `.eslintrc.json`) — keep Express handler signatures as-is even when a param is unused.
