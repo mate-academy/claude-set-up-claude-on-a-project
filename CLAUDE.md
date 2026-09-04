@@ -1,10 +1,5 @@
 # CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## What this is
-
-A minimal Express API (in-memory data, no database) used as the starter project for the Claude Code course. The app code itself is not the point of this exercise — see README.md for the actual assignment (setting up `CLAUDE.md` and `.claude/settings.json`).
+Minimal in-memory Express API used as the starter project for the Claude Code course (the app code isn't the point — see README.md for the actual assignment: setting up CLAUDE.md and .claude/settings.json).
 
 ## Commands
 
