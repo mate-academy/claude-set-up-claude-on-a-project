@@ -1,5 +1,5 @@
 # CLAUDE.md
-
+Project Description
 This file includes the changes to the project Claude file to allow for claude to know what to do, irrespective of the developer or specific topic.
 ## Commands
 
@@ -17,5 +17,5 @@ This file includes the changes to the project Claude file to allow for claude to
 - Config values (e.g. `PORT`) are read from `process.env`; `.env.example` documents the shape and real values would live in a git-ignored `.env`.
 
 ## Conventions
-- Use res.status().json() for errors, not throw statements" (tells Claude what to do)
+- Use `res.status(400).json({ error: "..." })` for validation errors, not throw statements.
 - Unused-argument lint warnings are suppressed for `req`, `res`, `next`, and `_`-prefixed names (see `.eslintrc.json`) — keep Express handler signatures as-is even when a param is unused.
