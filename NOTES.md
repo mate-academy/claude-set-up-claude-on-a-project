@@ -4,7 +4,7 @@ What I put in CLAUDE.md and what I left out (and why)
 - I described the architecture by naming each file and its single responsibility, so Claude can locate the right place without guessing.
 - I left out code-style rules (line length, indentation, quoting). The project has ESLint for that.
 
-Permission rules I added (.claude/settings.json)
+Permission rules
 
 - allow: Bash(npm test:*) — tests are the safest loop Claude runs; letting them go without a prompt keeps iteration fast.
 - ask: Bash(git push:*) — pushing is outward-facing and hard to reverse quietly, so I want a confirmation every time.
