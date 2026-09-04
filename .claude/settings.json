@@ -1,13 +1,7 @@
 {
   "permissions": {
-    "allow": [
-      "Run tests"
-    ],
-    "deny": [
-      "Push to the main branch directly"
-    ],
-    "ask": [
-      "Every commit"
-    ]
+    "allow": ["Bash(npm test:*)"],
+    "deny": ["Bash(git push --force:*)", "Read(./.env)"],
+    "ask": ["Bash(git push:*)"]
   }
 }
