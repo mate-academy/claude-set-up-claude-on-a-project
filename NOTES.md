@@ -32,12 +32,7 @@ A short map of the codebase and the responsibility of each layer:
   (`require.main === module`) and exports `app`, so tests can drive it via supertest
   without binding a port. Adding a resource means adding a `routes/` file and mounting
   it here.
-- **`routes/`** — one file per resource, each exporting an `express.Router()`. Routers
-  own HTTP concerns only: parse/validate input, pick a status code, shape the JSON
-  response.
-- **`db/store.js`** — the only data access layer. An in-memory array with a
-  hand-incremented `nextId`; state resets on every restart, so tests must not assume a
-  fixed row count or that a created user persists across runs.
+etc.
 
 ### Conventions
 
@@ -46,15 +41,7 @@ The house style Claude has to match when writing code:
 - **CommonJS only** — `require` / `module.exports`, never `import` / `export`.
   `package.json` has no `"type": "module"` and `.eslintrc.json` sets
   `sourceType: "script"`.
-- **Named exports only, never default exports** — e.g. `module.exports = { router }`,
-  never `module.exports = router`. Import with destructuring:
-  `const { router } = require("./routes/users");`.
-- **Formatting** — double-quoted strings, semicolons, 2-space indent.
-- **Routes never touch the `users` array directly** — add a function to `db/store.js`
-  and call it through the `store` module, so swapping in a real database stays a
-  one-file change.
-- **Validate required fields in the route before calling the store**, and coerce
-  `req.params.id` with `Number()` since store lookups compare with `===`.
+etc.
 
 ## 2. Which permission rules exist in the project?
 
@@ -63,36 +50,20 @@ They live in `.claude/settings.json`:
 ```json
 {
   "permissions": {
-    "allow": ["Run tests"],
-    "deny":  ["Push to the main branch directly"],
-    "ask":   ["Every commit"]
+    "allow": ["Bash(npm test:*)"],
+    "deny": ["Bash(git push --force:*)", "Read(./.env)"],
+    "ask": ["Bash(git push:*)"]
   }
 }
 ```
 
 | Bucket | Rule | Intent |
 | --- | --- | --- |
-| `allow` | Run tests | Running the test suite is safe and frequent, so it should never interrupt with a prompt. |
-| `deny` | Push to the main branch directly | Pushing to `main` bypasses PR review and CI — it should be blocked outright, not merely confirmed. |
-| `ask` | Every commit | Commits are recoverable but they alter history, so a human should approve each one. |
+| `allow` | Bash(npm test:*) | Running the test suite is safe and frequent, so it should never interrupt with a prompt. |
+| `deny` | Bash(git push --force:*)| Force-pushing rewrites shared history and can destroy others' work — block it outright. |
+| `deny` | Read(./.env)| Reading secrets should never happen — it's a data exfiltration risk. |
+| `ask` | Bash(git push:*) | Commits are recoverable but they alter history, so a human should approve each one. |
 
-> ⚠️ **These rules are written in plain English, not in Claude Code's rule syntax.**
-> Claude Code matches permission entries against `Tool(specifier)` patterns — for example
-> `Bash(npm test:*)`, `Bash(git push:*)`, `Bash(git commit:*)`. A string like
-> `"Push to the main branch directly"` matches no tool, so **none of these rules
-> currently take effect**: tests still prompt, commits still prompt, and the push to
-> `main` is not actually blocked. They read as intent documentation rather than
-> enforcement. A working equivalent would look roughly like:
->
-> ```json
-> {
->   "permissions": {
->     "allow": ["Bash(npm test)", "Bash(npm test:*)"],
->     "deny":  ["Bash(git push:* origin main:*)", "Bash(git push origin main)"],
->     "ask":   ["Bash(git commit:*)"]
->   }
-> }
-> ```
 
 ### What could go wrong without the deny rule?
 
