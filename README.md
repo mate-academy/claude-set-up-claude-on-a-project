@@ -73,7 +73,7 @@ Confirm you're signed in and Claude can see the project — ask "What's in this 
 Run:
 
 ```
-/init
+/init 
 ```
 
 Let Claude read the codebase and draft a `CLAUDE.md`. (No `/init`? Ask: "Create a CLAUDE.md for this project.")
