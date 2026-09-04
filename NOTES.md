@@ -16,3 +16,4 @@ What could go wrong without the force-push deny
 - Force-push rewrites remote history, so every teammate's local copy and every open PR silently diverges from origin.
 - A wrong refspec (git push --force origin main:dev) can clobber an unrelated branch.
 - It can permanently erase commits that were only on the remote, including releases or review history.
+
