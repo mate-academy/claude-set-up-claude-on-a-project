@@ -7,8 +7,8 @@ A simple Express.js REST API with users and health endpoints.
 
 
 ## Conventions
-- One route file per resource in `routes/`
-- Data access through `db/store.js`
+- Use one route file per resource in `routes/`, not multiple resources in one file
+- Use `db/store.js` for data access, not direct database queries
 
 
 ## Architecture
