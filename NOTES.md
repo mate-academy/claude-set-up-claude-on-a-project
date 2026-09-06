@@ -1,6 +1,1 @@
-I put into CLAUDE.md the Overview section, in which I wrote a short summary about what this project does, which language is used.
-I deleted the #CLAUDE.md section, because Claude already knows what is the purpose of a claude.md file.
-I also simplified Conventions section. 
-
-To .claude/settings.json I added the following rules: allow Bash(npm test:*), ask Bash(git push:*) and deny Read(./.env), Bash(git push --force:*).
-Without the deny rule any user can accidentally push changes into the master branch.
+I put into CLAUDE.md the Overview section, in which I wrote a short summary about what this project does, which language is used. I deleted the #CLAUDE.md section, because Claude already knows what is the purpose of a claude.md file. I also simplified Conventions section. To .claude/settings.json I added the following rules: allow Bash(npm test:*), ask Bash(git push:*) and deny Read(./.env), Bash(git push --force:*). Without the deny rule any user can accidentally push changes into the master branch. /memory shows and can successfully open the CLAUDE.md file. /permission also lists all the to project added permissions.  

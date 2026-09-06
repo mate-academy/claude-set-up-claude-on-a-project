@@ -1,6 +1,5 @@
 ## Overview
-This project is a real world application, in which newly learned Claude features can be tried out.
-It is written in JavaScript and uses Express API calls against localhost.
+Small Express API in JavaScript for learning Claude Code features
 
 ## Commands
 
@@ -17,5 +16,5 @@ It is written in JavaScript and uses Express API calls against localhost.
 
 ## Conventions
 
-- Route handlers validate input and return JSON error bodies (`{ error: "..." }`).
-- Data access is never inlined in routes, even for trivial in-memory operations.
+- Use JSON error bodies (`{ error: "..." }`) if validation fails
+- Do not inline data access in routes
