@@ -3,7 +3,7 @@
 // the server restarts.
 
 let users = [
-  { id: 1, name: "Ada Lovelace", email: "ada@example.com" },
+  { id: 1, name: "Tiago Mendes", email: "ada@example.com" },
   { id: 2, name: "Alan Turing", email: "alan@example.com" },
 ];
 
