@@ -16,5 +16,5 @@ Small Express API in JavaScript for learning Claude Code features
 
 ## Conventions
 
-- Use JSON error bodies (`{ error: "..." }`) if validation fails
-- Do not inline data access in routes
+- Use JSON error bodies ({ error: "..." }), not custom formats, for validation errors
+- Use data access functions from db/, not inline data access, in routes
