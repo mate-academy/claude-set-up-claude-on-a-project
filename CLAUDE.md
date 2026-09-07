@@ -28,3 +28,4 @@ CI (`.github/workflows/ci.yml`) runs `npm install`, `npm run lint`, `npm test` o
 
 - CommonJS (`require`/`module.exports`), not ESM.
 - ESLint config (`.eslintrc.json`) extends `eslint:recommended`; `no-unused-vars` ignores `req`, `res`, `next`, and `_`-prefixed args.
+- camelCase not snake_case for Variables
