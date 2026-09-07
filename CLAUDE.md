@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+A minimal Express REST API (`/users`, `/health`) used as the practice codebase for the Claude Code course.
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## What this is
