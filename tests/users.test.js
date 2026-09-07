@@ -30,3 +30,68 @@ test("POST /users with no body returns 400", async () => {
 
   assert.strictEqual(res.status, 400);
 });
+
+test("POST /users with a valid body creates a user", async () => {
+  const res = await request(app)
+    .post("/users")
+    .send({ name: "Grace Hopper", email: "grace@example.com" });
+
+  assert.strictEqual(res.status, 201);
+  assert.ok(typeof res.body.id === "number");
+  assert.strictEqual(res.body.name, "Grace Hopper");
+  assert.strictEqual(res.body.email, "grace@example.com");
+});
+
+test("POST /users trims surrounding whitespace before storing", async () => {
+  const res = await request(app)
+    .post("/users")
+    .send({ name: "  Katherine Johnson  ", email: "  katherine@example.com  " });
+
+  assert.strictEqual(res.status, 201);
+  assert.strictEqual(res.body.name, "Katherine Johnson");
+  assert.strictEqual(res.body.email, "katherine@example.com");
+});
+
+test("POST /users rejects a non-string name", async () => {
+  const res = await request(app)
+    .post("/users")
+    .send({ name: 123, email: "num@example.com" });
+
+  assert.strictEqual(res.status, 400);
+});
+
+test("POST /users rejects a whitespace-only name", async () => {
+  const res = await request(app)
+    .post("/users")
+    .send({ name: "   ", email: "blank@example.com" });
+
+  assert.strictEqual(res.status, 400);
+});
+
+test("POST /users rejects a malformed email", async () => {
+  const res = await request(app)
+    .post("/users")
+    .send({ name: "Bob", email: "not-an-email" });
+
+  assert.strictEqual(res.status, 400);
+});
+
+test("POST /users rejects a name longer than 100 characters", async () => {
+  const res = await request(app)
+    .post("/users")
+    .send({ name: "a".repeat(101), email: "long@example.com" });
+
+  assert.strictEqual(res.status, 400);
+});
+
+test("POST /users rejects a duplicate email with 409", async () => {
+  await request(app)
+    .post("/users")
+    .send({ name: "First", email: "dupe@example.com" });
+
+  const res = await request(app)
+    .post("/users")
+    .send({ name: "Second", email: "dupe@example.com" });
+
+  assert.strictEqual(res.status, 409);
+});

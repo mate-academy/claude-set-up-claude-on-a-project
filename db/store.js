@@ -17,6 +17,11 @@ function getUserById(id) {
   return users.find((user) => user.id === id);
 }
 
+function getUserByEmail(email) {
+  const target = String(email).toLowerCase();
+  return users.find((user) => user.email.toLowerCase() === target);
+}
+
 function createUser({ name, email }) {
   const user = { id: nextId, name, email };
   nextId += 1;
@@ -24,4 +29,4 @@ function createUser({ name, email }) {
   return user;
 }
 
-module.exports = { getAllUsers, getUserById, createUser };
+module.exports = { getAllUsers, getUserById, getUserByEmail, createUser };
