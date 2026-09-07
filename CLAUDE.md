@@ -2,12 +2,6 @@
 
 A minimal Express REST API (`/users`, `/health`) used as the practice codebase for the Claude Code course.
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## What this is
-
-A minimal Express REST API (`/users`, `/health`) used as the practice codebase for the Claude Code course. It is a teaching scaffold: the course tasks are about configuring Claude (`CLAUDE.md`, `.claude/settings.json`, `NOTES.md`), not about extending the API. Do not change the app code unless explicitly asked.
-
 ## Commands
 
 - `npm run dev` — start the API on http://localhost:3000 with `node --watch` (auto-reload)

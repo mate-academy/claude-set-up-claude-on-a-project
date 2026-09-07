@@ -4,3 +4,4 @@ I included the project description, key commands (dev, test, lint), coding conve
 ## Permissions
 I added an allow rule for npm test and a deny rule for reading .env files. Without the deny rule, Claude could accidentally read and expose secrets like API keys or database passwords.
 
+I verified that /memory shows the CLAUDE.md loaded and /permissions displays the allow/deny rules in place.
