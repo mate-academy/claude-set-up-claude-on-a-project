@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 
 const usersRoutes = require("./routes/users");
@@ -9,8 +11,11 @@ app.use(express.json());
 
 app.use("/users", usersRoutes);
 app.use("/health", healthRoutes);
+app.get("/", (req, res) => {
+  res.json({ message: "API is running" });
+});
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // Only start the server when this file is run directly (e.g. `npm run dev`),
 // so the tests can import `app` without opening a real port.
