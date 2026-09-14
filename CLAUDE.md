@@ -18,12 +18,18 @@ npm run lint              # eslint .
 
 CI (`.github/workflows/ci.yml`) runs `npm install`, `npm run lint`, and `npm test` on every push/PR.
 
+## Conventions
+
+- Use CommonJS (`require` / `module.exports`), not ES module `import`/`export` — `.eslintrc.json` sets `sourceType: "script"`.
+- Access data only through `db/store.js`'s exported functions (`getAllUsers`, `getUserById`, `createUser`), not by reading or mutating the in-memory array directly.
+- Test routes through the Express app with supertest (`require("../server")`), not by unit-testing route or store modules in isolation.
+
 ## Architecture
 
 - `server.js` — creates the Express app, mounts routers, and starts listening. It only calls `app.listen` when run directly (`require.main === module`), so `tests/` can `require("../server")` and drive the app with supertest without opening a real port.
 - `routes/` — one router file per resource (`users.js`, `health.js`), mounted in `server.js` under `/users` and `/health`.
-- `db/store.js` — the only place that touches data. Routes call into it (`getAllUsers`, `getUserById`, `createUser`) rather than manipulating the in-memory array directly.
-- `tests/` — integration-style tests that hit the Express app through supertest rather than unit-testing modules in isolation.
+- `db/store.js` — the only place that touches data (see Conventions).
+- `tests/` — integration-style tests that hit the Express app (see Conventions).
 
 ## Notes for this repo
 
