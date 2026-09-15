@@ -4,12 +4,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-`kodree` is a minimal, single-file bash project. The working directory contains one script:
-
-- `hello.sh` — prints `Hello, world!` to stdout.
-
-There is no package manager, test suite, linter, or build step. It is not a git repository.
+A small Express API for managing users, with an in-memory data store and a health check endpoint.
 
 ## Commands
 
-- Run the script: `bash hello.sh` (or `./hello.sh` if executable bit is set).
+- `npm run dev` — start the API with auto-reload on `http://localhost:3000`
+- `npm test` — run the test suite (`node:test` + `supertest`)
+- `npm run lint` — check code style with ESLint
+
+## Conventions
+
+- CommonJS only: use `require`/`module.exports`, not ES module `import`/`export`.
+- Error responses are JSON shaped as `{ "error": "message" }`, with an appropriate HTTP status code (see `routes/users.js`).
+
+## Architecture
+
+- `server.js` is the entry point; it wires up middleware and mounts route modules.
+- `routes/` holds one file per resource (`users.js`, `health.js`); route modules only handle HTTP concerns.
+- `db/store.js` is the sole data-access layer — an in-memory store that resets on restart. Routes go through it rather than holding their own state.
+- `tests/` mirrors `routes/`, one test file per resource, exercising the app via `supertest`.
