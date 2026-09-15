@@ -17,3 +17,7 @@ Added in `.claude/settings.json`:
 **What could go wrong without the deny rules:**
 - Without denying `Read(./.env)`, an agent could open the `.env` file while exploring the repo (e.g. while debugging config or grepping broadly) and end up with secrets/credentials in its context — which could then leak into logs, commit messages, or other output.
 - Without denying `git push --force:*`, a force-push (even one nested under the allowed/ask `git push` pattern) could silently overwrite or destroy commits on a shared branch, permanently losing someone else's work with no easy recovery.
+
+## Runtime verification
+
+Confirmed at the start of this session: CLAUDE.md's contents (commands, conventions, architecture) were loaded and shown as project instructions before any task began. `.claude/settings.json` was also inspected directly and contains the expected rules — `allow` for `Bash(npm test:*)`, `ask` for `Bash(git push:*)`, and `deny` for `Read(./.env)` and `Bash(git push --force:*)`. (This was checked by reading the loaded context and the settings file directly, not via the interactive `/memory` or `/permissions` commands, which are run by the human user in the CLI rather than by the assistant.)
