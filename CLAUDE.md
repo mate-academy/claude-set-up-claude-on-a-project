@@ -14,8 +14,9 @@ Starter Express API — CommonJS, in-memory data store.
 
 ## Conventions
 
-- CommonJS throughout (`require`/`module.exports`), not ESM.
-- One route file per resource under `routes/`, each exporting an `express.Router()` (see `routes/users.js`, `routes/health.js`).
+- Use `require`/`module.exports`, not `import`/`export`.
+- Use one route file per resource in `routes/`, not scattered route handlers.
+- Use `db/store.js` for data access, not direct mutations in route handlers.
 - Route handlers stay thin: validation and response shaping happen in the route; data access goes through `db/store.js`, never direct manipulation of data structures from a route file.
 - ESLint config (`.eslintrc.json`) allows unused `req`/`res`/`next` args and `_`-prefixed args; otherwise follows `eslint:recommended`.
 
