@@ -23,5 +23,3 @@ Starter Express API for the Claude Code course projects — an in-memory `users`
 - `server.js` is the entry point; it wires route modules onto the Express app and only calls `app.listen` when run directly, so tests can `require` the app without opening a port.
 - `routes/` holds one file per resource (`users.js`, `health.js`), each exporting an `express.Router()`.
 - `db/store.js` is a tiny in-memory data helper (no real database) — all reads/writes to `users` go through its exported functions.
-</content>
-</invoke>
