@@ -9,6 +9,17 @@ let users = [
 
 let nextId = 3;
 
+let posts = [
+  { id: 1, title: "On computable numbers", body: "A note about the machine." },
+  {
+    id: 2,
+    title: "Notes on the Analytical Engine",
+    body: "Sketch of the plan.",
+  },
+];
+
+let nextPostId = 3;
+
 function getAllUsers() {
   return users;
 }
@@ -24,4 +35,26 @@ function createUser({ name, email }) {
   return user;
 }
 
-module.exports = { getAllUsers, getUserById, createUser };
+function getAllPosts() {
+  return posts;
+}
+
+function getPostById(id) {
+  return posts.find((post) => post.id === id);
+}
+
+function createPost({ title, body }) {
+  const post = { id: nextPostId, title, body };
+  nextPostId += 1;
+  posts.push(post);
+  return post;
+}
+
+module.exports = {
+  getAllUsers,
+  getUserById,
+  createUser,
+  getAllPosts,
+  getPostById,
+  createPost,
+};
