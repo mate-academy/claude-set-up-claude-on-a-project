@@ -1,0 +1,5 @@
+node_modules
+package-lock.json
+
+# Prose files are written by hand — Prettier reflows them.
+*.md
