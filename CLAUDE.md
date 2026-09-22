@@ -14,9 +14,9 @@ A minimal Express API (starter project for the Claude Code course).
 
 ## Conventions
 
-- One route file per resource in `routes/`, mounted in `server.js` (e.g. `routes/users.js` → `/users`).
-- All data access goes through `db/store.js`, not direct manipulation of in-memory data from routes.
-- `server.js` exports `app` and only calls `app.listen` when run directly (`require.main === module`), so tests import `app` without opening a real port.
+- Use one route file per resource in `routes/`, mounted in `server.js` — never define routes directly in `server.js`.
+- Always access data through `db/store.js`, never manipulate data directly in route handlers.
+- Always export `app` from `server.js` separately from `app.listen()`, so tests can import it without starting a server.
 
 ## Architecture
 
