@@ -33,6 +33,4 @@ CI (`.github/workflows/ci.yml`) runs `npm install`, `npm run lint`, `npm test` o
 
 `server.js` is the entry point and the only place routers are wired up. It creates the app, applies `express.json()`, mounts each router, and exports `app`.
 
-The `app.listen()` call is guarded by `require.main === module` so importing `server.js` doesn't bind a port. That guard is what lets `tests/users.test.js` do `require("../server")` and drive the app through `supertest` with no server running — keep it if you touch startup.
-
 `db/store.js` is an in-memory array behind three functions and stands in for a real database. State is module-level and resets on restart, which means tests share one store within a run: a test that creates a user affects later tests, so assert on shape and relative counts rather than exact contents.
