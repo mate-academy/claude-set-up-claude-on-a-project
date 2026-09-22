@@ -13,3 +13,4 @@ The purpose statement of the CLAUDE.md file was excluded since it does not guide
 - Allow npm test to not delay the testing.
 - Ask first before push to the git remote repository so as to not push unintended changes.
 - Deny removing all file from this project and deny a forced git push of changes. Without these deny rules, a breaking change could reach the remote respository and cause downstream CI/CD issues.
+
