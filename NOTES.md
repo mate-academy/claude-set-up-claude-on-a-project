@@ -1,0 +1,1 @@
+I delete the comments in CLAUDE.md, and leave other things be, beacause I think those comments are useful only for humans, for CLAUDE it's a cluter explaining things that is already obvious. I add permission rules based on the example above, allow bash npm test, ask bash git push, and deny read env and deny bash git push force
