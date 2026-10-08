@@ -1,6 +1,6 @@
 ## Set up Claude Code on a real project
 
-> This is the first project of the Claude Code course. Finish **Units 1 and 2** before you start.
+> This is the first project of the Claude Code course. Finish 
 
 You'll take everything from Units 1 and 2 and put it to work on a real codebase: install and sign in to Claude Code, then give this project a `CLAUDE.md` and permission rules that make Claude genuinely useful from the very first session.
 
