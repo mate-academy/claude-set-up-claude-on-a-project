@@ -1,0 +1,5 @@
+I put all of the required info into Claude.md
+One sentence of what the project does. 4 of the most useful commands - the ones recommended in the README, plus one that runs a single test. 4 conventions about what to use and what not. 4 short points about the architecture, including everything listed in the README.
+I didn' put any sensitive info in the Claude.md, and tried to cut any obvious bits to keep it short.
+
+I added the suggested permission rules, as they seemd appropriate to the task. Tests can always run without asking. I want to review the changes before pushes. Reading sensitive data in .env, and force pushing shouldn't be allowed at all. /permissions shows my rules, except the allow rule for some reason. Powershell usage is denied by a startup configuration, not my settings.json file.
