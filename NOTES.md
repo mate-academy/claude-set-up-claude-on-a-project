@@ -2,35 +2,34 @@
 
 ## What's in CLAUDE.md, and what I left out
 
-I kept only what Claude can't quickly infer or would likely get wrong:
+I kept only what Claude can't infer quickly or would likely get wrong:
 
-- **Commands**, including how to run a single test file or test by name. Claude would otherwise reach for `npx jest`.
-- **Conventions:** CommonJS instead of ES modules, `node:test` + `supertest` instead of Jest, all data access through `db/store.js`, and the `{ "error": "..." }` response shape. Each one is phrased as a rule Claude can follow without asking.
-- **Architecture:** why `server.js` exports `app` and only calls `listen` when run directly (so tests don't open a port), the "one router per resource" pattern, and the fact that the store is in memory and resets on restart.
+- **Commands:** `npm run dev`, `npm test`, `npm run lint`. Otherwise Claude might guess `npx jest` or `node server.js`.
+- **Conventions,** each written as "do X, not Y" so Claude can follow it without asking: a new resource gets its own file in `routes/` plus an `app.use` line; data access goes through `db/store.js`; tests use `node:test` + `supertest` against the exported `app`, not Jest; the code is CommonJS, not ES modules.
+- **Architecture:** why `server.js` exports `app` and only calls `listen` when run directly (so tests can import it), one router per resource, and the in-memory store that resets on restart.
 
-I deliberately left out:
+I removed or left out:
 
-- A list of every file or endpoint. Claude can read `routes/` in seconds, and a list would go stale.
+- The generic `/init` header ("This file provides guidance to Claude Code…"). It tells Claude nothing.
+- Details Claude can read from the code in seconds: the single-file test command, ESLint versions, the `{ "error": ... }` response shape, `Number(req.params.id)`, lists of files and endpoints. They make the file longer and go stale.
 - Generic advice ("write clean code", "add tests").
 - The course instructions themselves (e.g. "don't change app code"). That's a one-off task constraint, not a lasting project rule.
-- Anything from `.env`. The file only says that secrets live there and must not be read.
+- Anything about `.env`. The deny rules in `.claude/settings.json` enforce that, so it doesn't need to be a request in CLAUDE.md.
 
-## Permission rules
+## Permission rules (`.claude/settings.json`)
 
-- **allow:** `npm test`, `node --test`, and `npm run lint`. They are read-only and run constantly, so prompting each time adds nothing.
-- **ask:** `git push`, because pushing publishes work and I want to confirm it each time.
+- **allow:** `npm test`, `node --test`, `npm run lint`. They are safe, read-only and run constantly, so asking every time adds nothing.
+- **ask:** `git push`, because pushing publishes work and should be confirmed each time.
 - **deny:**
-  - `Read`/`Edit` on `./.env` and `cat .env`. Without these, Claude could read real secrets into the conversation (and from there into logs or a commit) just by trying to "check the config".
-  - `git push --force` / `-f`, because a force push can silently overwrite other people's commits on the remote. Deny takes precedence over the `ask` rule for `git push`, so these are blocked outright.
+  - `Read(./.env)`, `Edit(./.env)`, `Bash(cat .env:*)`. **Without them,** Claude could read real secrets into the conversation just by trying to "check the config", and from there they could end up in logs, a commit or a reply.
+  - `git push --force` / `git push -f`. **Without them,** a single approval could silently overwrite other people's commits on the remote. Deny takes precedence over the `ask` rule for `git push`, so these are blocked outright.
 
-The `Bash(cat .env)` rule is a best-effort extra. Bash rules match command prefixes, so other commands could still read the file. The `Read` deny rule is the main protection.
+The `Bash(cat .env)` rule is only a best-effort extra. Bash rules match command prefixes, so other commands could still read the file. The `Read` deny rule is the main protection.
 
 ## Fixed along the way: .gitignore
 
-Every line of `.gitignore` after the first was indented with spaces. Git treats those spaces as part of the pattern, so `.env` and `.claude/settings.local.json` were **not** actually ignored. I removed the leading whitespace and confirmed with `git check-ignore` that both are now ignored.
+Every line after the first used to be indented with spaces, so Git treated the spaces as part of each pattern and `.env` and `.claude/settings.local.json` were not actually ignored. I removed the whitespace, and `git check-ignore -v` now confirms both files are ignored.
 
 ## Verification
 
-- [ ] `/memory` in a fresh session shows `CLAUDE.md` loaded
-- [ ] `/permissions` shows the allow / ask / deny rules above
-- [ ] "How do I run the tests here?" is answered from `CLAUDE.md`
+In a new session, `/memory` showed the project `CLAUDE.md` loaded, and `/permissions` listed the allow / ask / deny rules from `.claude/settings.json`.
