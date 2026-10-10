@@ -1,4 +1,4 @@
 # Notes
 
-What did you put in your CLAUDE.md, and what did you deliberately leave out, and why?
-Which permission rules did you add, and what could go wrong without your deny rule?
+I put commands, conventions and architecture in claude.md as per instructions. Nothing explicit as i dont know what this prject is about!
+Permissions rules are set as per instructions!
