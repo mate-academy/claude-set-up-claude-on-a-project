@@ -1,4 +1,5 @@
 # Notes
 
-I put commands, conventions and architecture in claude.md as per instructions. Nothing explicit as i dont know what this prject is about!
-Permissions rules are set as per instructions!
+I included npm conmmands in CLAUDE.md so calude knows how to execute these. I did not leave out anything
+
+I added the deny rule for .env because without it, Claude could read my secrets.
