@@ -14,7 +14,6 @@ A small Express REST API (users + health check) with an in-memory store, used as
 ## Conventions
 
 - CommonJS only: use `require` / `module.exports`, not `import` / `export` (ESLint `sourceType: "script"`).
-- Routes never touch data directly; all reads/writes go through functions exported from `db/store.js`. Add a store function rather than mutating `users` from a route.
 - Error responses are JSON `{ error: "<message>" }` with the matching status (400 validation, 404 not found); return early with `return res.status(...).json(...)`.
 - Route params are strings — convert ids with `Number(req.params.id)` before calling the store (store ids are numbers).
 - Write tests with `node:test` + `node:assert` + `supertest`, calling `request(app)` against the exported app — never start a real server in tests.

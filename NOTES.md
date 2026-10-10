@@ -1,7 +1,7 @@
 # Notes
 
-I included npm conmmands in CLAUDE.md so calude knows how to execute these. I did not leave anything out deliberately as all instructions in claude.md have their place.
+I included npm conmmands in CLAUDE.md so calude knows how to execute these. I left out the routes comment as it should be clear that code only can touch data via functions
+I added the deny rule for .env because without it, Claude could read my secrets. Claude can't push without manual approval.
 
-I added the deny rule for .env because without it, Claude could read my secrets.
+I verified with /memory and /permissions that everything is ok.     
 
-I verified with /memory and /permissions that everything is ok.
