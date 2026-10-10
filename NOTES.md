@@ -5,3 +5,5 @@ I added the deny rule for .env because without it, Claude could read my secrets.
 Claude can't push without manual approval.
 
 I verified with /memory and /permissions that everything is ok.
+
+    
