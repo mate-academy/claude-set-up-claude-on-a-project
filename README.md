@@ -4,7 +4,7 @@
 
 You'll take everything from Units 1 and 2 and put it to work on a real codebase: install and sign in to Claude Code, then give this project a `CLAUDE.md` and permission rules that make Claude genuinely useful from the very first session.
 
-This is also the repository you'll keep building on as the course continues — each level's project adds to it, all the way to a shareable plugin at the end.
+This is also the repository you'll keep building on as the course continues — each level's project adds to it, all the way to a shareable plugin at the end. EXTRA TEXT
 
 ### What you'll deliver
 
