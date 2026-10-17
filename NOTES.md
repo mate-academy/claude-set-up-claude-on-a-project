@@ -18,5 +18,5 @@ I also fixed `.gitignore`: its lines had leading spaces, so `.env` and `.claude/
 
 ## Verification
 
-- `/memory`: TODO: confirm `CLAUDE.md` is listed as loaded
-- `/permissions`: TODO: confirm the allow / ask / deny rules appear
+- `/memory`: lists the project `./CLAUDE.md` as loaded and opens it in the editor (`$VISUAL`, vim here)
+- `/permissions`: confirm the allow / ask / deny rules appear
