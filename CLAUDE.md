@@ -24,8 +24,8 @@ CI (`.github/workflows/ci.yml`) runs `npm install`, then `npm run lint`, then `n
 ## Conventions
 
 - Use CommonJS (`require` / `module.exports`), not ES modules. ESLint is configured with `sourceType: "script"`.
-- Use calling functions in ds/store.js, not touching data directly. Add a store function before adding a route that needs new data access.
-- Use the shape `res.status(<code>).json({ error: "<message>" })`, not your own routine structure. Return 400 for validation failures and 404 for missing resources.
-- Tests use `node:test` + `node:assert` + `supertest` against the exported `app` not Jest or Mocha.
+- Call functions in `db/store.js`; never touch data directly. Add a store function before adding a route that needs new data access.
+- Use the shape `res.status(<code>).json({ error: "<message>" })` for error responses, not a custom error shape. Return 400 for validation failures and 404 for missing resources.
+- Tests use `node:test` + `node:assert` + `supertest` against the exported `app`, not Jest or Mocha.
 - Tests share store state, so don't write assertions that depend on exact user counts or IDs.
 - Unused `req`, `res`, `next` and `_` arguments are allowed by the lint config, so keep the standard handler signatures.
