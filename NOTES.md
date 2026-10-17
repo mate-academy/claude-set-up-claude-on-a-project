@@ -25,8 +25,7 @@ The rules live in `.claude/settings.json`, which is committed so everyone on the
 
 ## Verification
 
-<!-- TODO: run these in a fresh `claude` session, then fix this section to match what you see and delete this comment. -->
+I checked both in a fresh `claude` session started in the project folder:
 
-- `/memory` lists `./CLAUDE.md` as loaded.
-- `/permissions` shows 2 allow rules, 1 ask rule and 3 deny rules.
-- Asking "How do I run the tests here?" gets the answer `npm test` from CLAUDE.md, without me explaining.
+- `/memory` shows **Project memory: Checked in at ./CLAUDE.md**, so Claude loads my CLAUDE.md.
+- `/permissions` shows all my rules: **Allow** has `Bash(npm test:*)` and `Bash(npm run lint:*)`, **Ask** has `Bash(git push:*)`, and **Deny** has `Read(./.env)`, `Bash(git push --force:*)` and `Bash(git push -f:*)`.
