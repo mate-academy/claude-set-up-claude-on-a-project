@@ -11,6 +11,7 @@ A small Express API (users and health endpoints) with an in-memory store. It ser
 - `node --test tests/users.test.js`: run one test file
 - `node --test --test-name-pattern="POST /users"`: run the tests whose names match
 - `npm run lint`: ESLint (`eslint:recommended`)
+- `npm help` - give me help on the npm command
 
 CI (`.github/workflows/ci.yml`) runs `npm install`, then `npm run lint`, then `npm test` on Node 22. Changes must pass both lint and tests.
 

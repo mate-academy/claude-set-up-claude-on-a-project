@@ -8,7 +8,7 @@ I left out anything Claude can read straight from the code in seconds, like a fu
 
 ## Permission rules
 
-- **Allow:** `npm test`, `npm run lint`, `npm run dev`, `node --test …` and read-only git (`status`, `diff`, `log`). These are safe and run constantly, so prompting for them is just noise.
+- **Allow:** `npm help`, `npm test`, `npm run lint`, `npm run dev`, `node --test …` and read-only git (`status`, `diff`, `log`). These are safe and run constantly, so prompting for them is just noise.
 - **Ask:** `git push`. A push publishes work to a shared remote, so I want to confirm each one.
 - **Deny:** reading `.env`, and any force-push (`--force` / `-f`).
 
