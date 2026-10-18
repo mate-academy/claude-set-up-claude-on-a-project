@@ -19,7 +19,7 @@
       "Read(./.env.local)",
       "Edit(./.env)",
       "Edit(./.env.local)",
-      "Bash(cat .env)",
+      "Bash(cat .env)"
     ]
   }
 }
