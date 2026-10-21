@@ -14,7 +14,7 @@ A small Express REST API (users + health check) backed by an in-memory store, us
 
 ## Conventions
 
-- Use CommonJS (require/module.exports), not ES modules .
+- Use `require`/`module.exports`, not `import`/`export`.
 - Write tests with `node:test` + `node:assert` + `supertest` against the exported `app`. Don't add Jest or Mocha.
 - Routes never touch data directly. They go through functions exported from `db/store.js`; add new data functions there.
 - Error responses are JSON shaped `{ error: "<message>" }` with the right status (400 for validation, 404 for missing). Successful creates return 201.
