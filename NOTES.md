@@ -1,8 +1,12 @@
-## What did you put in your CLAUDE.md, and what did you deliberately leave out, and why?
+# NOTES.md
 
-- put "Config comes from env vars (see .env.example). Real values go in .env, which must never be read or committed."
-- remove "This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository."
+## CLAUDE.md choices
 
-## Which permission rules did you add, and what could go wrong without your deny rule?
+Included: one-line description, commands, conventions, architecture.
+Left out: the CI details and the README pointer — not something Claude needs to act on, just noise for future sessions.
 
-- deny "Read(./.env)" without it claude can read env sensitive data
+## Permission rules
+
+- Allow: `npm test` — safe, run often, no reason to confirm each time.
+- Ask: `git push` — want to confirm before code leaves my machine.
+- Deny: reading `.env` and force-push — without the deny rule, Claude could leak secrets from `.env` into a response, or force-push and overwrite remote history.
