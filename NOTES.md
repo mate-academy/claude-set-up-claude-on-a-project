@@ -20,7 +20,7 @@ I left out:
   - `git reset --hard`;
   - `rm -rf`.
 
-Without the `.env` deny rule, Claude could read real secrets into the conversation context, for example while "checking config", and then repeat them in output or in a commit. That risk is higher in this repo because the `.gitignore` lines after `node_modules/` start with spaces, and Git treats leading spaces as part of the pattern. I checked with `git check-ignore`: `.env` and `.claude/settings.local.json` are not ignored, so a real `.env` could be committed by accident. I'm not changing app files in this project, so the deny rule is the safeguard here. The `.gitignore` itself should be fixed separately. Without the force-push and `reset --hard` rules, a single mistaken command could destroy commits on the remote or uncommitted local work.
+Without the `.env` deny rule, Claude could read real secrets into the conversation context, for example while "checking config", and then repeat them in output or in a commit. That risk is higher in this repo because the `.gitignore` lines after `node_modules/` start with spaces, and Git treats leading spaces as part of the pattern. I checked with `git check-ignore`: `.env` and `.claude/settings.local.json` are not ignored, so a real `.env` could be committed by accident. I fixed this in a separate commit by removing the leading spaces (not app code), and `git check-ignore` now matches both files. The deny rule still matters: an ignored `.env` can still be read into the conversation. Without the force-push and `reset --hard` rules, a single mistaken command could destroy commits on the remote or uncommitted local work.
 
 ## Verification
 
