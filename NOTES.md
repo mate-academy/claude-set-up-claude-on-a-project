@@ -27,4 +27,5 @@ Without the `.env` deny rule, Claude could read real secrets into the conversati
 - `claude --version` → `2.1.309 (Claude Code)`.
 - `.claude/settings.json` parses as valid JSON with 8 allow, 2 ask and 7 deny rules.
 - A fresh, non-interactive session (`claude -p "How do I run the tests here...?"`) answered `npm test` and `node --test tests/users.test.js` and said it took them from the Commands section of `CLAUDE.md`, so the file is loaded.
-- That run warned that allow rules are ignored until the folder is trusted. To check interactively, open `claude` here once and accept the trust dialog. `/memory` should then list `./CLAUDE.md`, and `/permissions` should show the allow, ask and deny rules above.
+- That run warned that allow rules are ignored until the folder is trusted, so I opened `claude` here interactively and accepted the trust dialog.
+- In that interactive session, `/memory` lists `./CLAUDE.md` as project memory, and `/permissions` shows the allow, ask and deny rules above.
