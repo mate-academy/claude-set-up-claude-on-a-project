@@ -1,0 +1,23 @@
+diff --git a/README.md b/README.md
+index 3c4d5e6..7f8a9b0 100644
+--- a/README.md
++++ b/README.md
+@@ -1,12 +1,12 @@
+ # Starter Users API
+ 
+-A small Express API with a users endpoint and a health check. Data is kept in memroy and resets when the server restarts.
++A small Express API with a users endpoint and a health check. Data is kept in memory and resets when the server restarts.
+ 
+ ## Getting started
+ 
+-1. Install dependancies: `npm install`
+-2. Copy `.env.example` to `.env`
+-3. Run the server: `npm run dev` (it listens on port 3000 by defualt)
++1. Install dependencies: `npm install`
++2. Copy `.env.example` to `.env`.
++3. Run the server: `npm run dev` (it listens on port 3000 by default; set `PORT` to change it).
+ 
+ ## Running tests
+ 
+-Run `npm test` to run the the test suite.
++Run `npm test` to run the test suite.

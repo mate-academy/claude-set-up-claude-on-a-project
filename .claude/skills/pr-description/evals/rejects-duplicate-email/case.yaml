@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: rejects-duplicate-email
+expected_outcome: |
+  A short PR description with What changed, Why and How to test sections, in that order, using bold labels. Why says it closes issue #7. A Risks section flags that a non-string email now causes a 500. How to test gives runnable steps (npm test and/or a request that shows the 409).
+context:
+  scaffold_script: place-files.sh

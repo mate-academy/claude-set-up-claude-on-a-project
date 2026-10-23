@@ -1,0 +1,6 @@
+commit 4e1c2b9 (HEAD -> fix-duplicate-email)
+Author: Sam Rivera
+    Reject duplicate emails on POST /users
+
+    Fixes #7. Creating a user with an email that already exists now
+    returns 409 instead of silently creating a second user.

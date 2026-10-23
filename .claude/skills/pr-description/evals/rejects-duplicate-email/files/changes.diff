@@ -1,0 +1,53 @@
+diff --git a/db/store.js b/db/store.js
+index 1a2b3c4..5d6e7f8 100644
+--- a/db/store.js
++++ b/db/store.js
+@@ -16,6 +16,10 @@ function getUserById(id) {
+   return users.find((user) => user.id === id);
+ }
+ 
++function getUserByEmail(email) {
++  return users.find((user) => user.email.toLowerCase() === email.toLowerCase());
++}
++
+ function createUser({ name, email }) {
+   const user = { id: nextId, name, email };
+   nextId += 1;
+@@ -23,4 +27,4 @@ function createUser({ name, email }) {
+   return user;
+ }
+ 
+-module.exports = { getAllUsers, getUserById, createUser };
++module.exports = { getAllUsers, getUserById, getUserByEmail, createUser };
+diff --git a/routes/users.js b/routes/users.js
+index 9a8b7c6..1f2e3d4 100644
+--- a/routes/users.js
++++ b/routes/users.js
+@@ -29,6 +29,10 @@ router.post("/", (req, res) => {
+     return res.status(400).json({ error: "name and email are required" });
+   }
+ 
++  if (store.getUserByEmail(email)) {
++    return res.status(409).json({ error: "A user with that email already exists" });
++  }
++
+   const user = store.createUser({ name, email });
+   res.status(201).json(user);
+ });
+diff --git a/tests/users.test.js b/tests/users.test.js
+index 2b3c4d5..6e7f8a9 100644
+--- a/tests/users.test.js
++++ b/tests/users.test.js
+@@ -37,3 +37,12 @@ test("POST /users with no body returns 400", async () => {
+ 
+   assert.strictEqual(res.status, 400);
+ });
++
++test("POST /users with an existing email returns 409", async () => {
++  const res = await request(app)
++    .post("/users")
++    .send({ name: "Ada Again", email: "ADA@example.com" });
++
++  assert.strictEqual(res.status, 409);
++  assert.ok(res.body.error);
++});

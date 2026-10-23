@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: docs-only-readme-fix
+expected_outcome: |
+  A very short PR description for a README-only typo fix. It does not invent a code test plan; How to test is skipped or reduced to reading the rendered README.
+context:
+  scaffold_script: place-files.sh

@@ -1,0 +1,3 @@
+commit 2d4f6a8 (HEAD -> readme-typos)
+Author: Sam Rivera
+    fix readme typos

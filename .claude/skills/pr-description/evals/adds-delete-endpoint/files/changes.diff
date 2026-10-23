@@ -1,0 +1,64 @@
+diff --git a/db/store.js b/db/store.js
+index 1a2b3c4..8c9d0e1 100644
+--- a/db/store.js
++++ b/db/store.js
+@@ -23,4 +23,13 @@ function createUser({ name, email }) {
+   return user;
+ }
+ 
+-module.exports = { getAllUsers, getUserById, createUser };
++function deleteUser(id) {
++  const index = users.findIndex((user) => user.id === id);
++  if (index === -1) {
++    return false;
++  }
++  users.splice(index, 1);
++  return true;
++}
++
++module.exports = { getAllUsers, getUserById, createUser, deleteUser };
+diff --git a/routes/users.js b/routes/users.js
+index 9a8b7c6..4b5c6d7 100644
+--- a/routes/users.js
++++ b/routes/users.js
+@@ -33,4 +33,15 @@ router.post("/", (req, res) => {
+   res.status(201).json(user);
+ });
+ 
++// DELETE /users/:id — remove a user, or 404 if it doesn't exist
++router.delete("/:id", (req, res) => {
++  const id = Number(req.params.id);
++
++  if (!store.deleteUser(id)) {
++    return res.status(404).json({ error: "User not found" });
++  }
++
++  res.status(204).end();
++});
++
+ module.exports = router;
+diff --git a/tests/users.test.js b/tests/users.test.js
+index 2b3c4d5..0a1b2c3 100644
+--- a/tests/users.test.js
++++ b/tests/users.test.js
+@@ -37,3 +37,19 @@ test("POST /users with no body returns 400", async () => {
+ 
+   assert.strictEqual(res.status, 400);
+ });
++
++test("DELETE /users/:id removes the user", async () => {
++  const created = await request(app)
++    .post("/users")
++    .send({ name: "Temp User", email: "temp@example.com" });
++
++  const res = await request(app).delete(`/users/${created.body.id}`);
++  assert.strictEqual(res.status, 204);
++
++  const after = await request(app).get(`/users/${created.body.id}`);
++  assert.strictEqual(after.status, 404);
++});
++
++test("DELETE /users/:id returns 404 for a user that does not exist", async () => {
++  const res = await request(app).delete("/users/9999");
++  assert.strictEqual(res.status, 404);
++});

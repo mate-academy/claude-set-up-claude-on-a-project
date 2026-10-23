@@ -1,0 +1,7 @@
+commit 9f3d1a0 (HEAD -> add-delete-user)
+Author: Sam Rivera
+    add tests for delete
+
+commit 7c2e8b4
+Author: Sam Rivera
+    DELETE /users/:id endpoint

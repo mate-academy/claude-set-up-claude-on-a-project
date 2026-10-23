@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: adds-delete-endpoint
+expected_outcome: |
+  A short PR description with What changed, Why and How to test, in that order. What changed is one or two sentences about the new DELETE /users/:id endpoint. How to test lists commands a reviewer can run.
+context:
+  scaffold_script: place-files.sh
