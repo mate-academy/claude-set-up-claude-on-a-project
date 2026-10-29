@@ -20,13 +20,14 @@ You are **not** changing the app code. The Express API below is here so you have
 
 ### What's already in the repo
 
-- `package.json` — scripts for `dev`, `test`, and `lint`
-- `server.js` — the entry point; starts the API
-- `routes/` — `users.js` and `health.js`, one file per resource
-- `db/store.js` — a tiny in-memory data helper
-- `tests/users.test.js` — a sample test
+- `package.json` — scripts for `dev`, `build`, `start`, `test`, `typecheck`, and `lint`
+- `tsconfig.json` — TypeScript compiler settings (output goes to `dist/`)
+- `server.ts` — the entry point; starts the API
+- `routes/` — `users.ts`, `health.ts` and `status.ts`, one file per resource
+- `db/store.ts` — a tiny in-memory data helper
+- `tests/users.test.ts` — a sample test
 - `.env.example` — sample config; real secrets would live in `.env` (which is git-ignored)
-- `.gitignore` — already ignores `node_modules`, `.env`, and `.claude/settings.local.json`
+- `.gitignore` — already ignores `node_modules`, `dist`, `.env`, and `.claude/settings.local.json`
 
 Run it once to see it work:
 
@@ -34,7 +35,9 @@ Run it once to see it work:
 npm install
 npm run dev      # starts the API on http://localhost:3000
 npm test         # runs the sample tests
-npm run lint     # checks code style
+npm run lint      # checks code style
+npm run typecheck # checks types
+npm run build     # compiles to dist/ (then `npm start` runs it)
 ```
 
 ### Before you start
@@ -54,7 +57,7 @@ npm run lint     # checks code style
    cd <repo-folder>
 ```
 
-`cd` means "change directory". To check you're in the right place, run `ls` (Mac/Linux) or `dir` (Windows) - you should see `server.js`, `package.json`, and the `routes`, `db`, and `tests` folders.
+`cd` means "change directory". To check you're in the right place, run `ls` (Mac/Linux) or `dir` (Windows) - you should see `server.ts`, `package.json`, and the `routes`, `db`, and `tests` folders.
 
 ### Tasks
 
@@ -85,7 +88,7 @@ Edit the file so it has these four parts, each lean and specific:
 - a one-line description of what the project does
 - **Commands** — at least two you run often (here: `npm run dev`, `npm test`, `npm run lint`)
 - **Conventions** — at least two real rules ("use X, not Y"), written so Claude can follow them without asking a question
-- **Architecture** — a few lines on how the project is organised (the `server.js` entry point, one route file per resource in `routes/`, data access through `db/store.js`)
+- **Architecture** — a few lines on how the project is organised (the `server.ts` entry point, one route file per resource in `routes/`, data access through `db/store.ts`)
 
 Then trim it: cut anything obvious from the code, any one-off notes, and anything sensitive. Shorter is stronger.
 

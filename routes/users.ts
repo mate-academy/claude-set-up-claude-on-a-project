@@ -1,5 +1,5 @@
-const express = require("express");
-const store = require("../db/store");
+import express from "express";
+import * as store from "../db/store";
 
 const router = express.Router();
 
@@ -14,7 +14,8 @@ router.get("/:id", (req, res) => {
   const user = store.getUserById(id);
 
   if (!user) {
-    return res.status(404).json({ error: "User not found" });
+    res.status(404).json({ error: "User not found" });
+    return;
   }
 
   res.json(user);
@@ -22,14 +23,15 @@ router.get("/:id", (req, res) => {
 
 // POST /users — create a user; name and email are required
 router.post("/", (req, res) => {
-  const { name, email } = req.body;
+  const { name, email } = (req.body ?? {}) as Partial<store.NewUser>;
 
   if (!name || !email) {
-    return res.status(400).json({ error: "name and email are required" });
+    res.status(400).json({ error: "name and email are required" });
+    return;
   }
 
   const user = store.createUser({ name, email });
   res.status(201).json(user);
 });
 
-module.exports = router;
+export default router;

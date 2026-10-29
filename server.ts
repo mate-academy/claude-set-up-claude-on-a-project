@@ -1,7 +1,8 @@
-const express = require("express");
+import express from "express";
 
-const usersRoutes = require("./routes/users");
-const healthRoutes = require("./routes/health");
+import usersRoutes from "./routes/users";
+import healthRoutes from "./routes/health";
+import statusRoutes from "./routes/status";
 
 const app = express();
 
@@ -9,6 +10,7 @@ app.use(express.json());
 
 app.use("/users", usersRoutes);
 app.use("/health", healthRoutes);
+app.use("/status", statusRoutes);
 
 const PORT = process.env.PORT || 3000;
 
@@ -20,4 +22,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = app;
+export default app;
