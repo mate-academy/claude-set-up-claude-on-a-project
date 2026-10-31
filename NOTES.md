@@ -24,3 +24,4 @@
 Without the `.env` deny rule, Claude could read the file and inadvertently include a secret value in a response or a generated file. The file is git-ignored, but that only keeps it out of commits — it doesn't stop a tool call from opening it.
 
 Without the force-push deny rule, a misguided `git push --force` could overwrite teammates' commits on a shared branch with no recovery path short of reflog surgery.
+

@@ -27,3 +27,4 @@ To run a single test file: `node --test tests/users.test.js`
 - All data reads and writes must go through `db/store.js`, not inline arrays
 - Route files own HTTP logic only (status codes, request parsing, response shaping); business logic belongs in `db/store.js` or a dedicated module
 - `name` and `email` are required on POST `/users`; return `400` with `{ error: "..." }` on missing fields
+
