@@ -48,5 +48,5 @@ The deny rules take precedence over the allow and ask rules, so `git push --forc
 
 ## Verification
 
-- `/memory`: TODO, confirm `CLAUDE.md` is listed as loaded.
-- `/permissions`: TODO, confirm the allow, ask and deny rules above are listed.
+- `/memory`: `CLAUDE.md` is listed as loaded.
+- `/permissions`: the allow, ask and deny rules above are listed.
