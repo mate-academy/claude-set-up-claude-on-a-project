@@ -14,5 +14,5 @@ Without the deny rules, Claude could open `.env` while looking at config and pul
 
 ## Verification
 
-- `/memory` shows CLAUDE.md loaded: _(confirm)_
-- `/permissions` lists the allow / ask / deny rules: _(confirm)_
+- `/memory` shows the project's CLAUDE.md as loaded. ✅
+- `/permissions` lists the allow / ask / deny rules from `.claude/settings.json`. ✅
