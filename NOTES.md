@@ -29,7 +29,13 @@
   "permissions": {
     "allow": ["Bash(npm test:*)"],
     "ask": ["Bash(git push:*)"],
-    "deny": ["Read(./.env)", "Bash(git push --force:*)"]
+    "deny": [
+      "Read(./.env)",
+      "Bash(git push *--force*)",
+      "Bash(git push -f*)",
+      "Bash(git push * -f *)",
+      "Bash(git push * -f)"
+    ]
   }
 }
 ```
@@ -37,9 +43,9 @@
 - **allow `npm test`:** it's the command run most often, it's read-only, and it's safe. Without this rule, every test run stops for an approval prompt.
 - **ask `git push`:** pushing publishes work to the shared repo, so I want to confirm each push.
 - **deny `Read(./.env)`:** keeps real secrets out of Claude's context. Without it, Claude could read `.env` while exploring and repeat values from it in output, logs or a commit.
-- **deny `git push --force`:** a force-push can overwrite other people's history on the remote, and that's hard to undo. Without this rule, it could happen after a single approval.
+- **deny force-push flags:** the rules block `--force` and `-f` wherever they appear in a `git push` command, including after the remote and branch. A force-push can overwrite other people's history on the remote, and that's hard to undo.
 
-The deny rules take precedence over the allow and ask rules, so `git push --force` is blocked even though `git push` is only set to "ask".
+The deny rules take precedence over the allow and ask rules, so force-push commands are blocked even though `git push` is only set to "ask".
 
 **Known gaps:**
 
