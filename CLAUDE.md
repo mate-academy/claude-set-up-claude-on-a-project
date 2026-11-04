@@ -4,8 +4,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A small Express REST API (users + health check) backed by an in-memory store. It's the starter project for a Claude Code course.
 
-This is my attempt at using git clone for my efforts to learn claude code.
-
 ## Commands
 
 - `npm run dev`: start the API on http://localhost:3000 (`PORT` env var overrides). It runs `node --watch server.js`, so it auto-restarts on file changes and keeps running until stopped. Don't run it in the foreground; use a background shell or test through `npm test` instead.
