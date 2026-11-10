@@ -1,5 +1,5 @@
 # NOTES.md
-
+TODO: put something useful here
 ## CLAUDE.md
 
 I kept it to four short sections: a one-line description, the three commands I actually run (`npm run dev`, `npm test`, `npm run lint`, plus how to run a single test file), two real conventions (CommonJS not ESM, data access only through `db/store.js`), and a short architecture note on how `server.js`, `routes/`, and `db/store.js` fit together.
