@@ -1,0 +1,5 @@
+He eliminado de CLAUDE.md una nota sobre el workflow ci.yml que decía que se ejecutaba npm run lint antes que npm test. Es algo obvio mirando el archivo ci.yml. En su lugar, incluí en CLAUDE.md las convenciones específicas del proyecto (ruteo, formato de errores, casteo de IDs) y la arquitectura (server.js y db/store.js). Dejé fuera instrucciones genéricas de Node o detalles obvios porque el archivo debe ser conciso y enfocado solo en este proyecto.
+
+En permisos agregué un allow para permitir ejecutar npm test sin que me pregunte porque todos los tests son unitarios que no modifican data. También agregué dos denies para evitar que se eliminen o borren archivos. Sin estos deny, el asistente podría borrar accidentalmente código fuente o archivos de configuración críticos, rompiendo la aplicación. Finalmente agregué un ask para que me pida confirmación cada vez que se hace un push.
+
+Para validar que todo funcionara correctamente, ejecuté el comando `/memory` y comprobé que mostró CLAUDE.md cargado. También ejecuté `/permissions` y verificó que las reglas que configuré estaban activas.
