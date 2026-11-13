@@ -21,7 +21,7 @@ The rules live in `.claude/settings.json`, which is committed so everyone workin
 
 **What could go wrong without the deny rules:**
 
-- **`Read(./.env)`:** `.env` is where real secrets go (database URLs, API keys). Without this rule, Claude could open the file while debugging config. The secrets would then be sent to the model and could show up in its output, in logs or in code it writes. This repo's `.gitignore` also doesn't ignore `.env` yet (its entries have leading spaces), so the deny rule is one of the few things protecting the file.
+- **`Read(./.env)`:** `.env` is where real secrets go (database URLs, API keys). Without this rule, Claude could open the file while debugging config. The secrets would then be sent to the model and could show up in its output, in logs or in code it writes. 
 - **`git push --force` / `-f`:** a force push overwrites the remote branch with my local one. Commits that exist only on the remote, such as a teammate's work or review fixes, would be lost, and the course reviewer could see a broken branch history. An "ask" rule would let me approve it by accident; deny means it can never happen.
 
 ## Verification

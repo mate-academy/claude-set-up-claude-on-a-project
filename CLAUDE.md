@@ -9,7 +9,6 @@ Small Express REST API (users + health check) used as the base project for a Cla
 - `npm run dev` — start the API on http://localhost:3000 with `node --watch` (port from `PORT`)
 - `npm test` — Node's built-in test runner (`node --test`); single file: `node --test tests/users.test.js`
 - `npm run lint` — ESLint 8 with `.eslintrc.json`
-- CI (`.github/workflows/ci.yml`) runs `npm install` → `npm run lint` → `npm test` on Node 22; run lint and tests before calling work done.
 
 ## Architecture
 

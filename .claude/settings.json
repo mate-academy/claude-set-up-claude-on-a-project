@@ -8,7 +8,7 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(cp)",
-      "Bush(rm)"
+      "Bash(rm)"
     ],
     "deny": [
       "Read(./.env)",
