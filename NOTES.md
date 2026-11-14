@@ -15,7 +15,7 @@ Dependencies and their exact versions were not included, since they can be check
 The following rules were specified in this repository:
 - an allow rule to let Claude run tests with "npm test" without asking, as it cannot break anything.
 - a rule to ask before pushing, so that the author can check commits before Claude pushes anything
-- a deny rule to block Claude from reading .eve that could contain secrets
+- a deny rule to block Claude from reading ./.env that could contain secrets
 - a deny rule to prevent Claude from force pushing anything, because overwriting version history should be left for the author and be done with extreme care
 
-The /permissions command shows the above rules.
+The /memory command shows CLAUDE.md as loaded and the /permissions command shows the above rules.
