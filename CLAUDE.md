@@ -32,3 +32,4 @@ CI (`.github/workflows/ci.yml`) runs lint then tests on Node 22; both must pass.
 
 - Nothing loads `.env` (there is no `dotenv`); `PORT` only takes effect if set in the shell environment.
 - The `.env` and `.claude/settings.local.json` entries in `.gitignore` are indented, so git does not actually match them. Check `git status` before committing if either file exists.
+
