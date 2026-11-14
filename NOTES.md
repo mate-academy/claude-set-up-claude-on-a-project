@@ -43,8 +43,8 @@ The lines for `.env`, `npm-debug.log*` and `.claude/settings.local.json` in `.gi
 
 ## Verification
 
-- [ ] `/memory` in a fresh session shows `CLAUDE.md` loaded
-- [ ] `/permissions` shows the allow / ask / deny rules above
-- [ ] Asking "How do I run the tests here?" is answered from `CLAUDE.md`
+Checked in a fresh Claude Code session:
 
-<!-- Tick these after checking them in a new session, and replace this comment with a line saying what you saw. -->
+- [x] `/memory` shows `CLAUDE.md` loaded
+- [x] `/permissions` shows the allow / ask / deny rules above
+- [x] Asking "How do I run the tests here?" is answered from `CLAUDE.md`
