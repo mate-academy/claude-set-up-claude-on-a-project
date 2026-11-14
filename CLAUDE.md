@@ -37,7 +37,3 @@ CI (`.github/workflows/ci.yml`) runs `npm run lint` then `npm test` on Node 22; 
 - Write tests with `node:test` and `assert.strictEqual`, not Jest-style `expect`; test names follow `"<METHOD> <path> <expected behaviour>"`.
 - Put a one-line `// METHOD /path — description` comment above each route handler.
 - Do not add dependencies for things Node or Express already provide (test runner, file watching, JSON body parsing).
-
-## Gotchas
-
-- Secrets belong in `.env` (see `.env.example`), but the `.env` line in `.gitignore` is indented, so git does **not** actually ignore it. Never `git add .env` or use `git add -A`/`git add .` while a `.env` exists; stage files by name.

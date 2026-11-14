@@ -8,7 +8,6 @@
 - The commands used constantly (`npm run dev`, `npm test`, `npm run lint`), plus how to run a single test file or a single test by name, since that is not obvious from `package.json`.
 - An architecture note covering the things that take reading several files to work out: `server.js` exports the app and only listens when run directly, one router file per resource in `routes/`, and all data access going through `db/store.js`.
 - Conventions written as "use X, not Y" rules Claude can follow without asking: CommonJS rather than ES modules, routes never touching data directly, the JSON error shape and status codes, and `node:test` with `assert` rather than Jest-style `expect`.
-- One gotcha: the `.env` line in `.gitignore` is indented, so git does not actually ignore `.env`. Claude is told to stage files by name.
 
 **Left out:**
 
@@ -24,7 +23,7 @@ The file is loaded into every session, so each line has to be something Claude w
 - **Ask** on `git push`: pushing is visible to other people, so it gets a confirmation every time.
 - **Deny** reading `.env`, and `git push --force` / `git push -f`.
 
-Without the deny rules, Claude could read `.env` while exploring the project and pull real secrets into the conversation, where they might be echoed into output, a commit, or a log. That risk is higher here because `.env` is not actually git-ignored. A force-push could overwrite commits on the remote that cannot be recovered locally.
+Without the deny rules, Claude could read `.env` while exploring the project and pull real secrets into the conversation, where they might be echoed into output, a commit, or a log. A force-push could overwrite commits on the remote that cannot be recovered locally.
 
 ## Verification
 
