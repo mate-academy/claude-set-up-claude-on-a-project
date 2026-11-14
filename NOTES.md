@@ -10,9 +10,9 @@ I deliberately left out anything Claude can read from the code in seconds (full 
 
 - **Allow:** `npm test`, `npm run lint`, `git status`, `git diff`. These are safe, read-only or local-only commands I run constantly, so approving them every time is just friction.
 - **Ask:** `git push` and `npm install`. Both reach outside my machine (the remote, or the package registry and `package.json`), so I want to confirm each one.
-- **Deny:** reading `.env`, `git push --force` / `-f`, `git reset --hard`, and `rm -rf`.
+- **Deny:** reading `.env` (both the Read tool and shell reads like `cat .env` / `head .env`), `git push --force` / `-f`, `git reset --hard`, and `rm -rf`.
 
-Without the deny rules, Claude could read `.env` and pull real secrets (database URLs, API keys) into the conversation, logs, or even a commit. A force-push could overwrite shared history on the remote, and `reset --hard` / `rm -rf` could wipe uncommitted work with no undo. Deny rules apply even if I click through approvals quickly, so they're the safety net. `.env.example` is still readable since it only holds sample values. Personal tweaks go in `.claude/settings.local.json`, which `.gitignore` keeps out of the repo.
+Without the deny rules, Claude could read `.env` and pull real secrets (database URLs, API keys) into the conversation, logs, or even a commit. A force-push could overwrite shared history on the remote, and `reset --hard` / `rm -rf` could wipe uncommitted work with no undo. Deny rules apply even if I click through approvals quickly, so they're the safety net. Bash rules match on the command prefix, so they can't catch every way a shell could read a file; turning on Claude Code's sandbox is the stronger guard if `.env` ever holds real production secrets. `.env.example` is still readable since it only holds sample values. Personal tweaks go in `.claude/settings.local.json`, which `.gitignore` keeps out of the repo.
 
 ## Verification
 
