@@ -39,9 +39,9 @@ The aim was a file short enough that every line changes what Claude does.
 
 ## Verification
 
-- [ ] `/memory` in a fresh session shows `CLAUDE.md` as loaded
-- [ ] `/permissions` shows the allow / ask / deny rules above
-- [ ] Asking "How do I run the tests here?" is answered from `CLAUDE.md` without extra explanation
+- [x] `/memory` in a fresh session shows `CLAUDE.md` as loaded
+- [x] `/permissions` shows the allow / ask / deny rules above
+- [x] Asking "How do I run the tests here?" is answered from `CLAUDE.md` without extra explanation
 
 ## Found along the way
 
