@@ -18,4 +18,4 @@ Without the deny rules, Claude could read `.env` while exploring the project, an
 
 - `/memory` shows `CLAUDE.md` loaded: ☐ <!-- confirm in a fresh session -->
 - `/permissions` shows the allow / ask / deny rules: ☐ <!-- confirm in a fresh session -->
-- Asked "How do I run the tests here?" and Claude answered from `CLAUDE.md`: ☐
+- Asked "How do I run the tests here?" and Claude answered from `CLAUDE.md`: ☑
