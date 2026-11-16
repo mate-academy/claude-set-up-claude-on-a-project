@@ -30,4 +30,8 @@ While setting up, `git check-ignore` showed that `.gitignore` was not ignoring `
 
 ## Verification
 
-<!-- TODO: run /memory and /permissions in a fresh session, then replace this line with what you saw. -->
+Checked in a fresh session:
+
+- `/memory` shows the project `CLAUDE.md` as loaded.
+- `/permissions` shows the allow, ask and deny rules from `.claude/settings.json`.
+- I asked Claude a question about the project's files and it answered correctly from `CLAUDE.md` and the code, without me having to explain the project first.
