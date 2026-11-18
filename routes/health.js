@@ -2,9 +2,11 @@ const express = require("express");
 
 const router = express.Router();
 
-// GET /health — simple liveness check
+const API_NAME = process.env.API_NAME || "users-api";
+
+// GET /health — simple liveness check, tagged with the API's name
 router.get("/", (req, res) => {
-  res.json({ status: "ok" });
+  res.json({ status: "ok", name: API_NAME });
 });
 
 module.exports = router;

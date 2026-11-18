@@ -9,6 +9,7 @@ test("GET /health returns ok", async () => {
 
   assert.strictEqual(res.status, 200);
   assert.strictEqual(res.body.status, "ok");
+  assert.strictEqual(typeof res.body.name, "string");
 });
 
 test("GET /users returns a list of users", async () => {
