@@ -23,3 +23,8 @@
 
 **What could go wrong without the deny rule**
 Claude could read `.env` while debugging config or searching the project. Secrets such as API keys and database URLs would then be in its context, could be quoted in replies or logs, and could be copied into code or commits. `.gitignore` keeps `.env` out of git, but it doesn't stop Claude from reading the file. Only a deny rule does.
+
+## 3. Verification
+
+- **`/memory`:** run from the project folder, it lists `./CLAUDE.md` as the project memory file, so Claude Code loads it at the start of every session.
+- **`/permissions`:** it shows the rules from `.claude/settings.json` (project settings). Under **Allow**: `Bash(npm test:*)` and `Bash(node --test:*)`. Under **Deny**: `Read(./.env)` and `Read(./.env.*)`.
