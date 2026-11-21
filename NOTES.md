@@ -8,9 +8,9 @@ I deliberately left out a file-by-file listing (Claude can see it with `ls`), th
 
 ## Permission rules
 
-- **Allow:** `npm test` and `npm run lint`. They're safe, read-only checks that I run constantly, so being prompted each time is pure friction.
+- **Allow:** `npm test`. It's a safe, read-only check that I run constantly, so being prompted each time is pure friction.
 - **Ask:** `git push`. Pushing is outward-facing and can't be quietly undone, so I want to confirm each time.
-- **Deny:** reading `.env`, and `git push --force` / `git push -f`.
+- **Deny:** reading `.env`, and `git push --force`.
 
 Without the deny rules, Claude could read `.env` while exploring the project and pull real secrets (database URLs, API keys) into the conversation, where they could end up in logs, commits or a PR. A force push could overwrite the shared branch history and destroy other people's commits. Deny rules win over allow and ask rules, so even an accidental "yes" can't trigger them.
 
