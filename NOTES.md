@@ -15,6 +15,6 @@ I deliberately left out a file-by-file listing (Claude can see it with `ls`), th
 Without the deny rules, Claude could read `.env` while exploring the project and pull real secrets (database URLs, API keys) into the conversation, where they could end up in logs, commits or a PR. A force push could overwrite the shared branch history and destroy other people's commits. Deny rules win over allow and ask rules, so even an accidental "yes" can't trigger them.
 
 ## Verification
+- In a fresh Claude Code session, `/memory` confirmed that `CLAUDE.md` was loaded.
+- `/permissions` confirmed the allow, ask, and deny rules.
 
-- `/memory` shows `CLAUDE.md` loaded: <!-- confirm after starting a fresh session -->
-- `/permissions` shows the allow / ask / deny rules above: <!-- confirm after starting a fresh session -->
