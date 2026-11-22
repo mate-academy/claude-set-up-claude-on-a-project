@@ -7,7 +7,7 @@ A small Express REST API (users + health check) backed by an in-memory store, us
 ## Commands
 
 - `npm run dev` — start the API with `node --watch` on `http://localhost:3000`. `PORT` is read from the shell environment; nothing loads `.env` automatically (no dotenv).
-- `npm test` — run all tsests with the built-in `node --test` runner.
+- `npm test` — run all tests with the built-in `node --test` runner.
 - `node --test --test-name-pattern="health"` — run a single test by name.
 - `npm run lint` — ESLint (`eslint:recommended`, v8 config in `.eslintrc.json`).
 - Green means `npm run lint && npm test` both pass; CI runs exactly these on Node 22.

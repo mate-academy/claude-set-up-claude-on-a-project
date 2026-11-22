@@ -4,7 +4,7 @@
       "Bash(npm test)"
     ],
     "deny": [
-      "Read(.env)"
+      "Read(./.env)"
     ],
     "ask": [
       "Bash(git switch *)"
