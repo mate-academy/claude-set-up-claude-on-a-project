@@ -7,3 +7,7 @@ My CLAUDE.md has a one-line description of the project and the commands that mat
 ## Which permission rules did you add, and what could go wrong without your deny rule?
 
 In `.claude/settings.json` I allowed `npm test`, `npm run lint` and `node --test`, so Claude can run the test and lint loop without asking me each time. `git push` is set to ask, so nothing leaves my machine without my approval. The deny rules block reading `.env` and `.env.local`, and block `git push --force` / `git push -f`. Without them, Claude could read secrets such as API keys into the conversation, where they could end up in output, logs or a commit. It could also force-push and overwrite history on the remote, deleting other people's commits in a way that's hard to undo. Deny rules beat allow and ask rules, so even if I approve something too quickly by accident, these actions stay blocked.
+
+## Verification
+
+Running `/memory` showed that CLAUDE.md was loaded for the project, and `/permissions` showed my allow, ask and deny rules from `.claude/settings.json`.
