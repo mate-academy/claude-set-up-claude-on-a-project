@@ -14,7 +14,7 @@ I left out anything Claude can read from the code in a second: the list of endpo
 
 Without the deny rules, Claude could read `.env` while debugging config and pull real secrets into the conversation, where they might end up in logs or a commit. It could also force-push over teammates' work or wipe uncommitted changes with `reset --hard`, and neither of those can be undone. `.env.example` is still readable on purpose because it only has placeholders and documents the config.
 
-A side note: the repo's `.gitignore` has leading spaces on some lines (`   .env`). Git treats those spaces as part of the pattern, so `.env` is **not** actually ignored by this repo's `.gitignore`. The deny rule stops Claude from reading it, but a person could still commit it by accident. That's worth fixing in a separate change.
+A side note: the original `.gitignore` had leading spaces on some lines (`   .env`). Git treats those spaces as part of the pattern, so `.env` was **not** actually ignored, and a person could have committed it by accident. I fixed this in a separate commit and checked it with `git check-ignore`.
 
 ## Verification
 
