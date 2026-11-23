@@ -5,9 +5,11 @@
 let users = [
   { id: 1, name: "Ada Lovelace", email: "ada@example.com" },
   { id: 2, name: "Alan Turing", email: "alan@example.com" },
+  { id: 3, name: "Eleonora Cheban", email: "elya.cheban@icloud.com" },
 ];
 
-let nextId = 3;
+let nextId = 4;
+
 
 function getAllUsers() {
   return users;
