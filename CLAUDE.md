@@ -23,5 +23,6 @@ Config goes in `.env` (git-ignored); `.env.example` is the template.
 
 - ESLint ignores unused args named `_`, `req`, `res`, `next`.
 - Validation errors return `{ error: "<message>" }` with 400/404 status codes.
+
 - use spaces, not tabs
 - **Package Manager:** Use `npm`, not `pnpm` or `yarn`.
