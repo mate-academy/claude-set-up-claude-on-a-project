@@ -14,3 +14,7 @@ I added permission rules:
 - Deny: "Read(./.env)"
 
 Without a deny rule, secrets stored in the .env file could be compromised.
+
+/memory shows CLAUDE.md loaded.
+
+/permissions shows my defined rules correctly.
