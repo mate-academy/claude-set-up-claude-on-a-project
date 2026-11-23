@@ -1,8 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-Express API starts the server.
+A small Express API with user and health-check routes.
 
 ## Commands
 

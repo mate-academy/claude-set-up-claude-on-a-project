@@ -9,8 +9,6 @@
 
 ## Conventions
 
-- Added Use X, not Y convention
-
 ## Permissions
 
 I added permissions:
