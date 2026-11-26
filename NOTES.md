@@ -6,6 +6,10 @@ The file covers four things: a one-line description of the project, the three co
 
 Left out: the Node test runner name, the `supertest` library, the ESLint suppression rule for unused params, and the note about running a single test file. Those are either derivable from `package.json` and `.eslintrc.json` in seconds, or one-off details that clutter the file without helping on most tasks. Shorter files get read; longer ones get skimmed.
 
+## Verification
+
+Ran `/memory` — CLAUDE.md appeared in the loaded context, confirming it is picked up at session start. Ran `/permissions` — all three rules (`allow npm test`, `ask git push`, `deny .env / force-push`) were listed as active.
+
 ## Permission rules and what they protect
 
 Three rules are in `.claude/settings.json`:

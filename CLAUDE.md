@@ -13,10 +13,10 @@ npm run lint
 ## Conventions
 
 - CommonJS (`require`/`module.exports`), not ESM
-- Routes return structured JSON errors with correct HTTP status codes
+- Routes return structured JSON errors with correct HTTP status codes, not plain strings or HTML
 
 ## Architecture
 
-- `server.js` — mounts routes, exports `app` without binding a port
+- `server.js` — API entry point; mounts routes, exports `app` without binding a port (uses `require.main === module` guard)
 - `routes/` — one file per resource, each exports a router
 - `db/store.js` — in-memory store; resets on restart
