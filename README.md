@@ -45,9 +45,9 @@ npm run lint     # checks code style
    claude --version
    ```
 3. Get this repo onto your machine and open a terminal in the project folder. **Opening a terminal** (the app where you type commands):
-   - **Mac** - press `Cmd + Space`, type "Terminal", press Enter.
-   - **Windows** - open "Terminal" or "PowerShell" from the Start menu.
-   - **Linux** - open your "Terminal" app (often `Ctrl + Alt + T`).**Getting into the project folder** - copy the repo to your machine, then move into it:
+    -   **Mac** - press `Cmd + Space`, type "Terminal", press Enter.
+    -   **Windows** - open "Terminal" or "PowerShell" from the Start menu.
+    -   **Linux** - open your "Terminal" app (often `Ctrl + Alt + T`).**Getting into the project folder** - copy the repo to your machine, then move into it:
 
 ```
    git clone <your-repo-url>
@@ -84,27 +84,8 @@ Edit the file so it has these four parts, each lean and specific:
 
 - a one-line description of what the project does
 - **Commands** — at least two you run often (here: `npm run dev`, `npm test`, `npm run lint`)
-
-- `npm run dev`: start the API with `node --watch` on port 3000 (or `PORT`)
-- `npm test`: run the tests with Node's built-in test runner
-- `npm run lint`: ESLint; CI runs lint and test on every push, so both must pass
-
-
 - **Conventions** — at least two real rules ("use X, not Y"), written so Claude can follow them without asking a question
-
-- CommonJS only: use `require`/`module.exports`, not `import`/`export` (ESLint is set to `sourceType: "script"`).
-- Tests use `node:test` + `node:assert` with supertest against the exported `app`, not Jest or Mocha, and never a real port.
-- Routes never touch data directly: go through `db/store.js` functions, and add a new function there rather than editing the array from a route.
-- Errors return JSON `{ "error": "<message>" }` with the right status (400 for invalid input, 404 for not found); successful creates return 201.
-
-
 - **Architecture** — a few lines on how the project is organised (the `server.js` entry point, one route file per resource in `routes/`, data access through `db/store.js`)
-
-- `server.js`: entry point; mounts one router per resource and exports `app`. It only calls `listen` when run directly, so tests can import it.
-- `routes/<resource>.js`: one Express router per resource (`users`, `health`), mounted at `/<resource>`.
-- `db/store.js`: in-memory data access; resets on restart, so nothing persists.
-- `tests/*.test.js`: picked up automatically by `node --test`.
-
 
 Then trim it: cut anything obvious from the code, any one-off notes, and anything sensitive. Shorter is stronger.
 
@@ -121,14 +102,9 @@ Example shape:
 ```json
 {
   "permissions": {
-    "allow": ["Bash(npm test:*)", "Bash(npm run lint:*)"],
+    "allow": ["Bash(npm test:*)"],
     "ask": ["Bash(git push:*)"],
-    "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)",
-      "Bash(git push --force:*)",
-      "Bash(git push -f:*)"
-    ]
+    "deny": ["Read(./.env)", "Bash(git push --force:*)"]
   }
 }
 ```
