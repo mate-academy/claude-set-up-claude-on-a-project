@@ -1,4 +1,6 @@
-# Notes
+## Verification
+
+In a fresh session, `/memory` lists `CLAUDE.md` as loaded and `/permissions` shows the allow, ask and deny rules above. Asking "How do I run the tests here?" gets `npm test` from the `CLAUDE.md` without further explanation.
 
 ## What's in CLAUDE.md, and what I left out
 
@@ -11,7 +13,3 @@ I left out anything Claude can read straight from the code (individual endpoints
 - **Allow** `npm test` and `npm run lint`: safe, read-only checks I run constantly, so Claude shouldn't have to ask each time.
 - **Ask** `git push`: pushing shares work with others, so I want to confirm it every time.
 - **Deny** reading `.env` and force-pushing. Without the `.env` rule, Claude could read real secrets (like a database URL) into the conversation, where they could end up in a log or a commit message. Without the force-push rule, a mistaken `git push --force` could overwrite commits on the remote that other people depend on.
-
-## Verification
-
-In a fresh session, `/memory` lists `CLAUDE.md` as loaded and `/permissions` shows the allow, ask and deny rules above. Asking "How do I run the tests here?" gets `npm test` from the `CLAUDE.md` without further explanation.
