@@ -1,50 +1,23 @@
 # Notes
 
-## CLAUDE.md: what I kept and what I cut
+## What's in CLAUDE.md, and what I left out
 
-**Kept:**
-- A one-line description of the project.
-- The `dev`, `test` and `lint` commands, plus how to run a single test (`node --test --test-name-pattern`). That last one isn't obvious from `package.json`, and it saves running the whole suite.
-- Conventions Claude could get wrong without being told:
-  - CommonJS, not ESM (ESLint is set to `sourceType: "script"`);
-  - `node:test` + `supertest`, not Jest;
-  - data access only through `db/store.js`;
-  - errors returned as `{ error }` with 400/404 status codes.
-- An architecture note on the parts you only understand by reading several files together:
-  - `server.js` exports `app` and only calls `listen()` when run directly, which is what makes the tests work;
-  - there is one router per resource;
-  - the in-memory store is shared between tests in the same run, so a test can't rely on a fixed user count.
+I kept `CLAUDE.md` to four short parts: a one-line description, the commands, the conventions and the architecture. The commands are `dev`, `test` and `lint`, plus how to run a single test file or only the tests matching a name, since that's what saves time when one test fails. The conventions are rules Claude couldn't safely guess and would otherwise get wrong: CommonJS instead of ES modules (ESLint is set to `sourceType: "script"`), `node:test` + `supertest` instead of Jest, all data access through `db/store.js`, and the `{ error: "..." }` response shape. The architecture section explains how the pieces connect, including two things that aren't obvious from a single file: `server.js` only calls `listen` when run directly so tests can import `app`, and the in-memory store is shared across tests in one run.
 
-**Cut:**
-- A full file listing, because Claude can discover it in one command.
-- The course instructions from the README, because they are one-off tasks, not rules for working in the code.
-- Any `.env` values, because secrets and config don't belong in a committed file.
-- Generic advice ("write tests", "handle errors"), because it adds lines without changing Claude's behaviour.
+I left out a file-by-file listing, since Claude can see the files itself. I also left out the endpoint list, which is already readable in `routes/`. Generic advice like "write tests" or "handle errors" doesn't help on this project, so it's out too. Nothing sensitive is in the file: no secrets, no real `.env` values, no one-off tasks. The less it says, the more weight each line carries.
 
 ## Permission rules
 
-- **allow:**
-  - `npm test`, `npm run lint` and `node --test` run constantly and only read code or run it locally;
-  - `git status`, `git diff` and `git log` are read-only.
+- **Allow:** `npm test`, `npm run lint` and `node --test`. They only read code and run checks, and Claude runs them all the time, so prompting for them would just be noise.
+- **Ask:** `git push` and `npm install`. Pushing sends my work to the remote, and installing pulls in outside code, so I want to approve both each time.
+- **Deny:**
+  - **Reading or editing `.env`:** without this rule, Claude could read real secrets into the conversation (and from there into logs or a commit), or overwrite my local config.
+  - **`git push --force` / `-f`:** without it, one mistaken command could overwrite shared history on the remote. Deny beats ask, so a plain push still prompts but a force-push is always refused.
+  - **`git reset --hard` and `rm -rf`:** these destroy uncommitted work with no undo.
 
-  Allowing them removes most permission prompts.
-- **ask:**
-  - `git push`, because it publishes work, so I want to confirm each time;
-  - `npm install`, because it changes `package-lock.json` and runs third-party install scripts.
-- **deny:**
-  - reading or editing `.env` (through `Read`/`Edit` and `cat .env`);
-  - `git push --force` / `-f`;
-  - `git reset --hard`;
-  - `rm -rf`.
-
-**What could go wrong without the deny rules:**
-- Claude could read `.env` while looking for config. The real secrets in it would then end up in the conversation context and could be repeated in output, logs or commits.
-- A force-push could overwrite teammates' commits on the remote.
-- `reset --hard` and `rm -rf` destroy uncommitted local work and can't be undone.
-
-`.claude/settings.json` is committed so the whole team shares these rules. Personal overrides go in `.claude/settings.local.json`, which is git-ignored.
+The `.env` rule only covers Claude's file tools. A shell command like `cat .env` would still get through unless I deny that too. So the rule lowers the risk; it doesn't make reading `.env` impossible.
 
 ## Verification
 
-- `npm test` and `npm run lint` pass. The single-test command in `CLAUDE.md` was run and works.
-- In a fresh session, `/memory` shows `CLAUDE.md` as loaded and `/permissions` lists the allow / ask / deny rules above.
+- `/memory`: <!-- TODO: confirm CLAUDE.md shows as loaded in a fresh session -->
+- `/permissions`: <!-- TODO: confirm the allow / ask / deny rules are listed -->
