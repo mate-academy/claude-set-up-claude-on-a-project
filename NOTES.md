@@ -19,7 +19,7 @@ I left out a file-by-file listing, since Claude can see the files itself. I also
 
 ## Verification
 
-- `/memory`: in a fresh session, the project `CLAUDE.md` is loaded and its full content is shown (description, Commands, Conventions, Architecture).
+- `/memory`: running it printed `Opened ./CLAUDE.md` and opened the project `CLAUDE.md` in the editor, which confirms Claude picks up this file as the project memory. Its content is the four parts above (description, Commands, Conventions, Architecture), and the same text was loaded into the session context.
 - `/permissions`: in the same session, all three groups are listed.
   - **Allow:** `Bash(npm run lint:*)` and `Bash(npm test:*)`. The third rule in the file, `Bash(node --test:*)`, did not appear, even though it is in `.claude/settings.json`. `npm test` runs `node --test`, so the full test run is still allowed. Running one test file directly may still prompt for approval.
   - **Ask:** `Bash(git push:*)` and `Bash(npm install:*)`.
